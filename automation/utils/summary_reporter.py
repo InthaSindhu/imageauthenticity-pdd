@@ -103,7 +103,8 @@ def generate_summary(results: dict, output_path: str, build: str = 'N/A',
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(md)
 
-    print(f"✅ Markdown summary written: {output_path}")
+    print(f"[OK] Markdown summary written: {output_path}")
+
     return output_path
 
 

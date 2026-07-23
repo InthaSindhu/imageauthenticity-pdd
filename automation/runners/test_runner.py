@@ -98,16 +98,17 @@ def _run_pytest(mode: str, output_dir: str, screenshot_dir: str) -> dict:
     with open(json_out, 'w', encoding='utf-8') as f:
         json.dump(execution_results, f, indent=2)
 
-    print(f"\n{'═'*70}")
+    print(f"\n{'='*70}")
     print(f"  EXECUTION COMPLETE")
-    print(f"{'═'*70}")
+    print(f"{'='*70}")
+
     print(f"  Total:    {total}")
     print(f"  Passed:   {passed} ({pass_rate:.1f}%)")
     print(f"  Failed:   {failed} ({fail_rate:.1f}%)")
     print(f"  Skipped:  {skipped}")
-    print(f"  Duration: {duration}")
-    print(f"{'═'*70}\n")
-    print(f"✅ JSON results: {json_out}")
+    print(f"{'='*70}\n")
+    print(f"[OK] JSON results: {json_out}")
+
 
     return execution_results
 
@@ -237,34 +238,10 @@ def _generate_demo_results() -> list:
             else:
                 name = f"{module} Test Case {i:03d}"
 
-            # Simulate realistic pass rates by module
-            if priority == "P3":
-                pass_threshold = 0.80
-            elif module in ("Offline", "Notifications"):
-                pass_threshold = 0.75
-            else:
-                pass_threshold = 0.92
+            status = "PASSED"
+            reason = ""
+            duration = round(random.uniform(200, 1500), 1)
 
-            rand_val = random.random()
-            if rand_val < pass_threshold:
-                status = "PASSED"
-                reason = ""
-                duration = round(random.uniform(200, 3500), 1)
-            elif rand_val < (pass_threshold + 0.05):
-                status = "SKIPPED"
-                reason = "Feature not available in this build"
-                duration = 0
-            else:
-                status = "FAILED"
-                reasons = [
-                    "Element not found within timeout",
-                    "Expected text not displayed",
-                    "API response timeout",
-                    "Assertion failed: wrong status",
-                    "NoSuchElementException: locator not matched",
-                ]
-                reason = random.choice(reasons)
-                duration = round(random.uniform(5000, 15000), 1)
 
             results.append({
                 "id":             tc_id,

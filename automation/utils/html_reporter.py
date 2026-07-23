@@ -230,7 +230,8 @@ function filterTable() {{
     with open(os.path.join(output_dir, 'dashboard.html'), 'w') as f:
         f.write(dashboard)
 
-    print(f"✅ HTML reports generated in: {output_dir}")
+    print(f"[OK] HTML reports generated in: {output_dir}")
+
     return report_path
 
 

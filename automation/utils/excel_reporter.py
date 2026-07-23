@@ -57,8 +57,10 @@ def _write_test_sheet(ws, title: str, tests: list, cols: list):
     # Data rows
     for r_idx, test in enumerate(tests, 3):
         status = test.get('status', 'UNKNOWN')
-        row_fill_color = STATUS_COLORS.get(status.upper(), 'FFFFFFFF')
-        row_fill = PatternFill('solid', fgColor=row_fill_color + '33')  # 20% opacity
+        row_fill_color = STATUS_COLORS.get(status.upper(), 'FFFFFF')
+        row_fill = PatternFill('solid', fgColor='33' + row_fill_color[:6])
+
+
 
         row_data = [
             test.get('id', ''),
@@ -209,7 +211,8 @@ def generate_excel_report(results: dict, output_dir: str):
     ws_s.column_dimensions['B'].width = 30
     wb_s.save(summary_path)
 
-    print(f"✅ Excel reports generated in: {output_dir}")
+    print(f"[OK] Excel reports generated in: {output_dir}")
+
     return main_path
 
 
