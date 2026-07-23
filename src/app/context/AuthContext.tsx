@@ -53,7 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setError(null);
     try {
       const data = await api.login(email, password);
-      setUser(data.user);
+      setUser(data.user || data);
     } catch (e: any) {
       setError(e.message || 'Login failed');
       throw e;
@@ -67,7 +67,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setError(null);
     try {
       const data = await api.signup(name, email, password);
-      setUser(data.user);
+      setUser(data.user || data);
     } catch (e: any) {
       setError(e.message || 'Registration failed');
       throw e;
@@ -75,6 +75,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
     }
   };
+
 
   const logout = () => {
     api.logout();
