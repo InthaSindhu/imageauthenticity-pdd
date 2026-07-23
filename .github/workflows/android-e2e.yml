@@ -65,16 +65,16 @@ jobs:
           elif [ -f "android-native/app/build/outputs/apk/debug/app-debug.apk" ]; then
             cp android-native/app/build/outputs/apk/debug/app-debug.apk build-output.apk
           else
-            echo "Building APK via Gradle..."
+            echo "Building APK via Gradle with Java 17..."
             cd android-native
             chmod +x gradlew
-            ./gradlew assembleDebug --no-daemon || true
+            ./gradlew assembleDebug --no-daemon -Dorg.gradle.java.home="$JAVA_HOME"
             cd ..
-            find . -name "*.apk"
-            cp android-native/app/build/outputs/apk/debug/app-debug.apk build-output.apk || cp $(find . -name "*.apk" | head -n 1) build-output.apk
+            cp android-native/app/build/outputs/apk/debug/app-debug.apk build-output.apk
           fi
           echo "✅ APK ready at build-output.apk"
           ls -lh build-output.apk
+
 
 
       - name: '📐 Get Version'
