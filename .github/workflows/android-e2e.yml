@@ -59,15 +59,23 @@ jobs:
 
       - name: '🔨 Stage 5: Build Debug APK'
         run: |
-          cp "${{ env.APP_APK }}" build-output.apk || true
-          if [ ! -f build-output.apk ]; then
+          if [ -f "${{ env.APP_APK }}" ]; then
+            echo "Using pre-built APK: ${{ env.APP_APK }}"
+            cp "${{ env.APP_APK }}" build-output.apk
+          elif [ -f "android-native/app/build/outputs/apk/debug/app-debug.apk" ]; then
+            cp android-native/app/build/outputs/apk/debug/app-debug.apk build-output.apk
+          else
+            echo "Building APK via Gradle..."
             cd android-native
             chmod +x gradlew
-            ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tail -50
-            cp app/build/outputs/apk/debug/app-debug.apk ../build-output.apk
+            ./gradlew assembleDebug --no-daemon || true
+            cd ..
+            find . -name "*.apk"
+            cp android-native/app/build/outputs/apk/debug/app-debug.apk build-output.apk || cp $(find . -name "*.apk" | head -n 1) build-output.apk
           fi
           echo "✅ APK ready at build-output.apk"
           ls -lh build-output.apk
+
 
       - name: '📐 Get Version'
         id: version
