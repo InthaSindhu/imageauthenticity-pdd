@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Baseline Load Test Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+  body{margin:0;background:#0f0f1a;color:#e0e0e0;font-family:'Inter',sans-serif}
+  header{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:40px;border-bottom:1px solid #2a2a4e}
+  header h1{font-size:26px;font-weight:800;color:#fff}
+  header p{color:#a0a0c0;margin-top:6px;font-size:13px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;padding:30px 40px}
+  .card{background:#1a1a2e;border-radius:16px;padding:24px;border:1px solid #2a2a4e;text-align:center}
+  .card .val{font-size:32px;font-weight:800;color:var(--c)}
+  .card .lbl{font-size:11px;color:#a0a0c0;margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+  table{width:90%;margin:0 auto 40px;border-collapse:collapse;background:#1a1a2e;border-radius:12px;overflow:hidden}
+  th{background:#16213e;padding:14px 20px;text-align:left;font-size:12px;color:#a0a0c0;text-transform:uppercase}
+  td{padding:12px 20px;border-bottom:1px solid #2a2a4e}
+</style>
+</head>
+<body>
+<header>
+  <h1>⚡ Baseline Load Test Report</h1>
+  <p>Image Authenticity Verification App — 100 Virtual Users × 60 Seconds | 2026-07-23 09:10 UTC</p>
+</header>
+<div class="cards">
+  <div class="card" style="--c:#6c63ff"><div class="val">N/A</div><div class="lbl">Requests / Sec</div></div>
+  <div class="card" style="--c:#1DB954"><div class="val">N/A</div><div class="lbl">Total Requests</div></div>
+  <div class="card" style="--c:#FFC107"><div class="val">N/Ams</div><div class="lbl">Avg Response</div></div>
+  <div class="card" style="--c:#1DB954"><div class="val">N/Ams</div><div class="lbl">Min Response</div></div>
+  <div class="card" style="--c:#DC3545"><div class="val">N/Ams</div><div class="lbl">Max Response</div></div>
+  <div class="card" style="--c:#6c63ff"><div class="val">N/Ams</div><div class="lbl">P95 Latency</div></div>
+  <div class="card" style="--c:#FFC107"><div class="val">N/Ams</div><div class="lbl">P99 Latency</div></div>
+  <div class="card" style="--c:#DC3545"><div class="val">0.00%</div><div class="lbl">Error Rate</div></div>
+</div>
+<table>
+  <tr><th>Metric</th><th>Value</th><th>Threshold</th><th>Status</th></tr>
+  <tr><td>Requests / Second</td><td>N/A req/s</td><td>Any</td><td>✅</td></tr>
+  <tr><td>Average Response Time</td><td>N/Ams</td><td>&lt; 2000ms</td><td>⚠️</td></tr>
+  <tr><td>P95 Response Time</td><td>N/Ams</td><td>&lt; 2000ms</td><td>⚠️</td></tr>
+  <tr><td>P99 Response Time</td><td>N/Ams</td><td>&lt; 5000ms</td><td>⚠️</td></tr>
+  <tr><td>Error Rate</td><td>0.00%</td><td>&lt; 10%</td><td>✅</td></tr>
+</table>
+</body></html>
