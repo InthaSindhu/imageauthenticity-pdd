@@ -102,6 +102,7 @@ def analyze_image(image_bytes: bytes, file_name: str = "image.jpg",
     # ══════════════════════════════════════════════════════════════════════
 
     # ELA — Error Level Analysis
+    ela_data = {}
     try:
         ela_data = analyze_ela(pil_image)
         diag_ela = float(np.clip(ela_data.get("ela_score", 15.0), 0, 100))
@@ -110,6 +111,7 @@ def analyze_image(image_bytes: bytes, file_name: str = "image.jpg",
         diag_ela = 15.0
 
     # Noise Inconsistency Analysis
+    noise_data = {}
     try:
         noise_data = analyze_noise(pil_image)
         diag_noise = float(np.clip(noise_data.get("noise_score", 10.0), 0, 100))
@@ -118,12 +120,14 @@ def analyze_image(image_bytes: bytes, file_name: str = "image.jpg",
         diag_noise = 10.0
 
     # JPEG Compression Artifact Analysis
+    comp_data = {}
     try:
         comp_data = analyze_compression(pil_image)
         diag_compression = float(np.clip(comp_data.get("compression_score", 10.0), 0, 100))
     except Exception as e:
         print(f"[Forensic Engine] Compression diagnostic warning: {e}")
         diag_compression = 10.0
+
 
     # Edge and Sharpness Analysis
     diag_sharpness = _calculate_sharpness_score(pil_image)

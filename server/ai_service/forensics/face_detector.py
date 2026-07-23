@@ -30,18 +30,24 @@ def detect_and_crop_face(image_pil: Image.Image) -> dict:
     img_gray = cv2.cvtColor(img_arr, cv2.COLOR_RGB2GRAY)
 
     # Load OpenCV default frontal face Haar cascade classifier
-    cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-    face_cascade = cv2.CascadeClassifier(cascade_path)
-
-    # Detect faces
-    faces = face_cascade.detectMultiScale(
-        img_gray,
-        scaleFactor=1.1,
-        minNeighbors=4,
-        minSize=(40, 40)
-    )
+    faces = []
+    try:
+        if hasattr(cv2, 'CascadeClassifier'):
+            data_path = getattr(getattr(cv2, 'data', None), 'haarcascades', '')
+            cascade_path = data_path + "haarcascade_frontalface_default.xml" if data_path else ""
+            face_cascade = cv2.CascadeClassifier(cascade_path)
+            if not face_cascade.empty():
+                faces = face_cascade.detectMultiScale(
+                    img_gray,
+                    scaleFactor=1.1,
+                    minNeighbors=4,
+                    minSize=(40, 40)
+                )
+    except Exception:
+        faces = []
 
     if len(faces) == 0:
+
         return {
             "has_face": False,
             "face_count": 0,
