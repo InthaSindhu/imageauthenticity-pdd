@@ -37,8 +37,12 @@ jobs:
 
       - name: '🔨 Stage 3: Build Web Application'
         run: |
+          mkdir -p public
+          cp -r docs/reports public/ 2>/dev/null || true
+          cp -r docs/load-tests public/ 2>/dev/null || true
           npm run build
           ls -la dist/
+
 
       - name: '🔍 Stage 4: Static Analysis Check'
         run: |
