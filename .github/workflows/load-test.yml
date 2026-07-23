@@ -12,6 +12,8 @@ env:
   K6_VERSION:   '0.51.0'
   BASE_URL:     'https://InthaSindhu.github.io/imageauthenticity-pdd'
 
+permissions: write-all
+
 jobs:
   load-test:
     name: '⚡ Baseline Load Test (100 VUs / 60s)'
@@ -27,14 +29,10 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: '🔧 Install k6'
-        run: |
-          curl -s https://github.com/grafana/k6/releases/download/v${{ env.K6_VERSION }}/k6-v${{ env.K6_VERSION }}-linux-amd64.tar.gz \
-            -L | tar xvz --strip-components 1 k6-v${{ env.K6_VERSION }}-linux-amd64/k6
-          chmod +x k6
-          sudo mv k6 /usr/local/bin/k6
-          k6 version
+        uses: grafana/setup-k6-action@v1
 
       - name: '📦 Setup Python (report generation)'
+
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'

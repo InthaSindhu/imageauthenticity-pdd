@@ -18,7 +18,10 @@ env:
   APP_PACKAGE: 'com.imageauth.verifier'
   APP_APK: 'ImageAuthenticity-debug.apk'
 
+permissions: write-all
+
 jobs:
+
   # ─────────────────────────────────────────────────────────────────────────────
   # STAGE 1-5: Build & Prepare
   # ─────────────────────────────────────────────────────────────────────────────
