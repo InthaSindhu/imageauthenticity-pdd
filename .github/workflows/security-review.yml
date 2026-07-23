@@ -30,8 +30,10 @@ jobs:
 
       - name: '⚡ Install Dependencies'
         run: |
-          pip install requests openpyxl pandas jinja2 pyyaml pytest pytest-rerunfailures pytest-timeout
+          pip install requests openpyxl pandas jinja2 pyyaml pytest pytest-rerunfailures pytest-timeout Pillow numpy scipy exifread fastapi
+          pip install -r server/ai_service/requirements.txt || true
           npm install --prefix server || true
+
 
 
       - name: '🔍 Run Semgrep SAST Scan'
