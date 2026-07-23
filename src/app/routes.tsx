@@ -55,6 +55,7 @@ import { DarkModeHomeScreen } from "./components/DarkModeHomeScreen";
 import { ResultAuthenticScreen } from "./components/ResultAuthenticScreen";
 
 export const router = createBrowserRouter([
+
   {
     path: "/",
     Component: SplashScreen,
@@ -271,4 +272,5 @@ export const router = createBrowserRouter([
     path: "/dark-mode",
     Component: DarkModeHomeScreen,
   },
-]);
+], { basename: import.meta.env.BASE_URL || '/' });
+

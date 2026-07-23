@@ -17,8 +17,8 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
-  // Required for Capacitor: assets must use relative paths inside the APK
-  base: './',
+  base: process.env.VITE_BASE_URL || '/imageauthenticity-pdd/',
+
   plugins: [
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if
