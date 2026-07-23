@@ -10,7 +10,7 @@ on:
     - cron: '0 2 * * *'  # Daily at 2 AM UTC
 
 env:
-  APPIUM_VERSION: '2.5.4'
+  APPIUM_VERSION: 'latest'
   PYTHON_VERSION: '3.11'
   ANDROID_API_LEVEL: '34'
   ANDROID_ARCH: 'x86_64'
@@ -19,6 +19,7 @@ env:
   APP_APK: 'ImageAuthenticity-debug.apk'
 
 permissions: write-all
+
 
 jobs:
 
@@ -121,9 +122,10 @@ jobs:
 
       - name: '📱 Install Appium'
         run: |
-          npm install -g appium@${{ env.APPIUM_VERSION }}
-          appium driver install uiautomator2
-          echo "✅ Appium ${{ env.APPIUM_VERSION }} + UiAutomator2 installed"
+          npm install -g appium@latest
+          appium driver install uiautomator2 || appium driver install --source=npm appium-uiautomator2-driver@2.45.1
+          echo "✅ Appium + UiAutomator2 installed"
+
 
       # ── Android SDK ───────────────────────────────────────────────────────
       - name: '🤖 Setup Android SDK'
