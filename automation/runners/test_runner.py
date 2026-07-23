@@ -24,18 +24,21 @@ def _run_pytest(mode: str, output_dir: str, screenshot_dir: str) -> dict:
 
     junit_xml = os.path.join(output_dir, 'JSON', 'junit-results.xml')
 
+    test_file = 'automation/tests/test_selenium_suite.py' if mode in ('live', 'selenium') else 'automation/tests/test_all_modules.py'
+
     cmd = [
         sys.executable, '-m', 'pytest',
-        'automation/tests/test_all_modules.py',
+        test_file,
         '-v',
         '--tb=short',
         f'--junitxml={junit_xml}',
         '--reruns=2',
         '--reruns-delay=1',
         '--timeout=120',
-        '-x' if mode == 'local' else '',  # Stop on first failure only locally
+        '-x' if mode == 'local' else '',
         f'--screenshot-dir={screenshot_dir}',
     ]
+
     cmd = [c for c in cmd if c]  # Remove empty strings
 
     print(f"\n{'='*70}")
