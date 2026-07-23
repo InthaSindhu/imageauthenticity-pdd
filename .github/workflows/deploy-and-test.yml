@@ -7,7 +7,14 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
-permissions: write-all
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 env:
   NODE_VERSION: '20'
@@ -21,6 +28,9 @@ jobs:
   build-and-deploy:
     name: '🏗️ Build & Deploy to GitHub Pages'
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: '📥 Stage 1: Repository Checkout'
@@ -34,30 +44,30 @@ jobs:
       - name: '📦 Install Node.js Dependencies'
         run: npm install
 
-
       - name: '🔨 Stage 3: Build Web Application'
         run: |
-          mkdir -p public
-          cp -r docs/reports public/ 2>/dev/null || true
-          cp -r docs/load-tests public/ 2>/dev/null || true
           npm run build
           touch dist/.nojekyll
           cp dist/index.html dist/404.html 2>/dev/null || true
           ls -la dist/
 
-
-
-      - name: '🔍 Stage 4: Static Analysis Check'
-        run: |
-          echo "Static analysis complete — built dist assets cleanly."
+      - name: '🔍 Stage 4: Upload Pages Artifact'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
 
       - name: '🌐 Stage 5: Deploy to GitHub Pages'
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: '🌐 Push gh-pages branch fallback'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           keep_files: false
-          full_commit_message: 'chore: automated web app deployment [skip ci]'
+          enable_jekyll: false
+
 
   # ─────────────────────────────────────────────────────────────────────────────
   # STAGE 6-13: Deployment Verification & Live E2E Selenium Testing
