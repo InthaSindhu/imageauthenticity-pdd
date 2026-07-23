@@ -167,10 +167,20 @@ def analyze_image(image_bytes: bytes, file_name: str = "image.jpg",
     diag_quality = _calculate_quality_score(pil_image)
 
     # ══════════════════════════════════════════════════════════════════════
-    # DIAGNOSTIC SUMMARY — assembled for display only
+    # EXIF & DIAGNOSTIC CALIBRATION — Ensures metadata & multi-spectral evidence calibration
+    # ══════════════════════════════════════════════════════════════════════
+    if is_ai_sw and verdict == "Real":
+        verdict = "Deepfake"
+        class_id = 0
+        confidence = 95.0
+        probabilities = {"Deepfake": 0.95, "Real": 0.03, "Tempered": 0.02}
+        print(f"[Forensic Engine] EXIF Calibration: AI generator software tag detected ('{sw_name}') -> Overriding verdict to Deepfake")
+
+    # ══════════════════════════════════════════════════════════════════════
+    # DIAGNOSTIC SUMMARY — assembled for display
     # ══════════════════════════════════════════════════════════════════════
     analysis = {
-        "ai_detector":   round(ai_result.get("ai_score", 0.0), 1),  # fake-likelihood score
+        "ai_detector":   round(ai_result.get("ai_score", 0.0), 1),
         "ela":           round(diag_ela, 1),
         "noise":         round(diag_noise, 1),
         "compression":   round(diag_compression, 1),
@@ -184,6 +194,7 @@ def analyze_image(image_bytes: bytes, file_name: str = "image.jpg",
         verdict, probabilities, diag_ela, diag_noise, diag_compression,
         has_exif, is_ai_sw, is_edit_sw, sw_name
     )
+
     explanation = " | ".join(explanation_list)
 
     elapsed = round(time.time() - t_start, 2)

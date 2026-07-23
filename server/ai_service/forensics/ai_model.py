@@ -89,30 +89,32 @@ class EfficientNetB3Classifier:
         logger.info(f"[AI Model] Using device: {self.device}")
 
         try:
-            # Build EfficientNet-B3 with 3-class head
-            self.model = tv_models.efficientnet_b3(weights=None)
-            in_features = self.model.classifier[1].in_features
-            self.model.classifier[1] = nn.Linear(in_features, 3)
+            with torch.no_grad():
+                # Build EfficientNet-B3 with 3-class head
+                self.model = tv_models.efficientnet_b3(weights=None)
+                in_features = self.model.classifier[1].in_features
+                self.model.classifier[1] = nn.Linear(in_features, 3)
 
-            # Load trained weights
-            state = torch.load(_MODEL_PATH, map_location=self.device)
+                # Load trained weights
+                state = torch.load(_MODEL_PATH, map_location=self.device)
 
-            # Handle common checkpoint wrapper formats
-            if isinstance(state, dict):
-                if "model_state_dict" in state:
-                    state = state["model_state_dict"]
-                elif "state_dict" in state:
-                    state = state["state_dict"]
+                # Handle common checkpoint wrapper formats
+                if isinstance(state, dict):
+                    if "model_state_dict" in state:
+                        state = state["model_state_dict"]
+                    elif "state_dict" in state:
+                        state = state["state_dict"]
 
-            self.model.load_state_dict(state, strict=True)
-            self.model.to(self.device)
-            self.model.eval()
-            self.model_loaded = True
-            logger.info(f"[AI Model] EfficientNet-B3 loaded from '{_MODEL_PATH}' [OK]")
+                self.model.load_state_dict(state, strict=True)
+                self.model.to(self.device)
+                self.model.eval()
+                self.model_loaded = True
+                logger.info(f"[AI Model] EfficientNet-B3 loaded from '{_MODEL_PATH}' [OK]")
 
         except Exception as e:
-            logger.error(f"[AI Model] Failed to load EfficientNet-B3 weights: {e}")
-            raise RuntimeError(f"Model load failed: {e}") from e
+            logger.warning(f"[AI Model] EfficientNet-B3 loading fallback: {e}")
+            self.model_loaded = False
+
 
     def predict(self, image_pil: Image.Image, face_crop_pil: Image.Image = None) -> dict:
         """
@@ -130,18 +132,24 @@ class EfficientNetB3Classifier:
                 "Ensure best_image_authenticity_model.pth exists in server/ai_service/"
             )
 
-        # Prefer face crop for deepfake detection on person images
-        target = face_crop_pil if face_crop_pil is not None else image_pil
-
         with torch.no_grad():
-            tensor = _preprocess(target).to(self.device)
-            logits = self.model(tensor)                           # (1, 3)
-            probs  = torch.softmax(logits, dim=1).squeeze(0)     # (3,)
-            probs_np = probs.cpu().numpy().astype(float)
+            tensor_full = _preprocess(image_pil).to(self.device)
+            logits_full = self.model(tensor_full)
+            probs_full  = torch.softmax(logits_full, dim=1).squeeze(0).cpu().numpy().astype(float)
+
+            if face_crop_pil is not None:
+                tensor_face = _preprocess(face_crop_pil).to(self.device)
+                logits_face = self.model(tensor_face)
+                probs_face  = torch.softmax(logits_face, dim=1).squeeze(0).cpu().numpy().astype(float)
+                # Dual-pass ensemble: 50% global image context + 50% face crop patch
+                probs_np = 0.5 * probs_full + 0.5 * probs_face
+            else:
+                probs_np = probs_full
 
         deepfake_prob = float(probs_np[0])
         real_prob     = float(probs_np[1])
         tempered_prob = float(probs_np[2])
+
 
         class_id   = int(np.argmax(probs_np))
         verdict    = CLASS_NAMES[class_id]
