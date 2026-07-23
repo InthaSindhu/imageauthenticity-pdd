@@ -139,33 +139,46 @@
 
 <main>
 
-  <h2>📄 Latest Test Reports</h2>
+  <h2>📥 Direct Downloads & Live Reports Center</h2>
   <div class="card-grid">
-    <a class="report-card" style="--c:#6c63ff" href="reports/latest/execution-report.html">
+    <a class="report-card" style="--c:#1DB954" href="reports/Automation_Test_Report.xlsx" download>
+      <div class="icon">📊</div>
+      <h3>Automation Test Report</h3>
+      <p>7-Sheet Excel Workbook: 430 E2E test cases, status breakdown, module metrics, and defect summary.</p>
+      <div class="tag">📥 Download .xlsx</div>
+    </a>
+    <a class="report-card" style="--c:#6c63ff" href="reports/test-cases.xlsx" download>
+      <div class="icon">🛡️</div>
+      <h3>Security Test Cases</h3>
+      <p>445 Structured Security Test Cases: Auth, Authorization, Injection, Input Validation, Business Logic, and DAST.</p>
+      <div class="tag">📥 Download .xlsx</div>
+    </a>
+    <a class="report-card" style="--c:#FFC107" href="reports/findings.xlsx" download>
+      <div class="icon">⚠️</div>
+      <h3>Security Findings Matrix</h3>
+      <p>Categorized vulnerability findings with CWE/OWASP mapping, file paths, severity ratings, and status.</p>
+      <div class="tag">📥 Download .xlsx</div>
+    </a>
+    <a class="report-card" style="--c:#17a2b8" href="reports/endpoint-inventory.xlsx" download>
+      <div class="icon">🔌</div>
+      <h3>API Endpoint Inventory</h3>
+      <p>Complete backend API endpoint catalog: HTTP methods, authentication requirements, roles, and controllers.</p>
+      <div class="tag">📥 Download .xlsx</div>
+    </a>
+    <a class="report-card" style="--c:#e83e8c" href="reports/execution-report.html" target="_blank">
       <div class="icon">🌐</div>
-      <h3>HTML Execution Report</h3>
-      <p>Interactive report with module breakdown, status filters, screenshot viewer, and per-test case drill-down.</p>
-      <div class="tag">Latest Build</div>
+      <h3>Interactive HTML Dashboard</h3>
+      <p>Full-screen interactive web dashboard: Status filters, search bar, screenshot viewer, and progress bars.</p>
+      <div class="tag">👁️ View Interactive HTML</div>
     </a>
-    <a class="report-card" style="--c:#1DB954" href="reports/latest/summary.md">
-      <div class="icon">📝</div>
-      <h3>Markdown Summary</h3>
-      <p>GitHub-flavored Markdown summary with pass/fail tables, build metadata, and execution metrics.</p>
-      <div class="tag">CI Summary</div>
-    </a>
-    <a class="report-card" style="--c:#FFC107" href="reports/latest/execution-results.json">
+    <a class="report-card" style="--c:#fd7e14" href="reports/execution-results.json" target="_blank">
       <div class="icon">📋</div>
-      <h3>JSON Results</h3>
-      <p>Structured execution data with full test case list, metrics, screenshots, and module analytics.</p>
-      <div class="tag">Raw Data</div>
-    </a>
-    <a class="report-card" style="--c:#DC3545" href="load-tests/">
-      <div class="icon">⚡</div>
-      <h3>Load Test Reports</h3>
-      <p>k6 Baseline load test results: 100 VUs × 60s — RPS, response times, P95/P99, error rates.</p>
-      <div class="tag">100 VUs</div>
+      <h3>JSON Execution Results</h3>
+      <p>Machine-readable JSON execution results containing complete test case analytics and duration metrics.</p>
+      <div class="tag">📄 View JSON</div>
     </a>
   </div>
+
 
   <h2>🧪 Test Module Overview</h2>
   <table class="workflow-table">
