@@ -243,9 +243,9 @@ jobs:
       - name: '📸 Stage 12: Capture Final Device Screenshots'
         if: always()
         run: |
-          mkdir -p automation/screenshots
-          adb shell screencap -p /sdcard/final-state.png 2>/dev/null || true
-          adb pull /sdcard/final-state.png automation/screenshots/device-final.png 2>/dev/null || true
+          mkdir -p automation/screenshots "Test Results/Screenshots"
+          timeout 5s adb shell screencap -p /sdcard/final-state.png 2>/dev/null || true
+          timeout 5s adb pull /sdcard/final-state.png automation/screenshots/device-final.png 2>/dev/null || true
           cp automation/screenshots/*.png "Test Results/Screenshots/" 2>/dev/null || true
           echo "✅ Screenshots captured"
 
@@ -253,9 +253,11 @@ jobs:
       - name: '📋 Stage 13: Capture Device & Appium Logs'
         if: always()
         run: |
-          adb logcat -d > automation/logs/device-logcat.log 2>/dev/null || true
+          mkdir -p automation/logs "Test Results/Logs"
+          timeout 5s adb logcat -d > automation/logs/device-logcat.log 2>/dev/null || true
           cp automation/logs/*.log "Test Results/Logs/" 2>/dev/null || true
           echo "✅ Logs collected"
+
 
       # ── Stage 14: Excel Report ───────────────────────────────────────────
       - name: '📊 Stage 14: Generate Excel Reports'
