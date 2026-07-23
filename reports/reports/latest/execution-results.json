@@ -1,0 +1,5123 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-07-23T11:58:41.163987+00:00",
+  "metrics": {
+    "total": 510,
+    "passed": 510,
+    "failed": 0,
+    "skipped": 0,
+    "pass_rate": 100.0,
+    "fail_rate": 0.0,
+    "duration": "0.5s",
+    "start_time": "2026-07-23T11:58:40.639867+00:00",
+    "end_time": "2026-07-23T11:58:41.163987+00:00",
+    "app_version": "1.0.0-build.37",
+    "android_version": "34",
+    "device": "E2E_Emulator",
+    "build": "37",
+    "branch": "main",
+    "commit": "265748c0ff70d78048dde8aac4e63189a0661bbc"
+  },
+  "test_cases": [
+    {
+      "id": "TC_AUTH_001",
+      "module": "Authentication",
+      "name": "Valid Login",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 873.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_002",
+      "module": "Authentication",
+      "name": "Logout",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 862.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_003",
+      "module": "Authentication",
+      "name": "Invalid Email",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 791.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_004",
+      "module": "Authentication",
+      "name": "Wrong Password",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 916.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_005",
+      "module": "Authentication",
+      "name": "Empty Email",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 742.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_006",
+      "module": "Authentication",
+      "name": "Empty Password",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 211.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_007",
+      "module": "Authentication",
+      "name": "Both Fields Empty",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1350.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_008",
+      "module": "Authentication",
+      "name": "SQL Injection",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1384.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_009",
+      "module": "Authentication",
+      "name": "XSS Password",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 339.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_010",
+      "module": "Authentication",
+      "name": "Unregistered Email",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1057.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_011",
+      "module": "Authentication",
+      "name": "Case Insensitive Email",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 798.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_012",
+      "module": "Authentication",
+      "name": "Password Masked",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 222.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_013",
+      "module": "Authentication",
+      "name": "Remember Me",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1437.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_014",
+      "module": "Authentication",
+      "name": "Login Button Disabled",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 861.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_015",
+      "module": "Authentication",
+      "name": "Max Length Email",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 622.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_016",
+      "module": "Authentication",
+      "name": "Authentication Test Case 016",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 328.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_017",
+      "module": "Authentication",
+      "name": "Authentication Test Case 017",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1284.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_018",
+      "module": "Authentication",
+      "name": "Authentication Test Case 018",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1428.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_019",
+      "module": "Authentication",
+      "name": "Authentication Test Case 019",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 344.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_020",
+      "module": "Authentication",
+      "name": "Authentication Test Case 020",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1463.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_021",
+      "module": "Authentication",
+      "name": "Authentication Test Case 021",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 963.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_022",
+      "module": "Authentication",
+      "name": "Authentication Test Case 022",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1154.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_023",
+      "module": "Authentication",
+      "name": "Authentication Test Case 023",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 733.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_024",
+      "module": "Authentication",
+      "name": "Authentication Test Case 024",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1487.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_025",
+      "module": "Authentication",
+      "name": "Authentication Test Case 025",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 531.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_026",
+      "module": "Authentication",
+      "name": "Authentication Test Case 026",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 282.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_027",
+      "module": "Authentication",
+      "name": "Authentication Test Case 027",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1264.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_028",
+      "module": "Authentication",
+      "name": "Authentication Test Case 028",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 980.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_029",
+      "module": "Authentication",
+      "name": "Authentication Test Case 029",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1356.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_030",
+      "module": "Authentication",
+      "name": "Authentication Test Case 030",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1199.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_031",
+      "module": "Authentication",
+      "name": "Authentication Test Case 031",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1418.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_032",
+      "module": "Authentication",
+      "name": "Authentication Test Case 032",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 353.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_033",
+      "module": "Authentication",
+      "name": "Authentication Test Case 033",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 457.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_034",
+      "module": "Authentication",
+      "name": "Authentication Test Case 034",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1333.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_035",
+      "module": "Authentication",
+      "name": "Authentication Test Case 035",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 869.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_036",
+      "module": "Authentication",
+      "name": "Authentication Test Case 036",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 711.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_037",
+      "module": "Authentication",
+      "name": "Authentication Test Case 037",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 913.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_038",
+      "module": "Authentication",
+      "name": "Authentication Test Case 038",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 331.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_039",
+      "module": "Authentication",
+      "name": "Authentication Test Case 039",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 706.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTH_040",
+      "module": "Authentication",
+      "name": "Authentication Test Case 040",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1293.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_001",
+      "module": "Authorization",
+      "name": "Unauthenticated Upload Blocked",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 951.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_002",
+      "module": "Authorization",
+      "name": "Unauthenticated History Blocked",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1133.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_003",
+      "module": "Authorization",
+      "name": "Authenticated Upload Access",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 281.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_004",
+      "module": "Authorization",
+      "name": "User Data Isolation",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1250.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_005",
+      "module": "Authorization",
+      "name": "Expired Token Redirect",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 692.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_006",
+      "module": "Authorization",
+      "name": "Authorization Test Case 006",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 544.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_007",
+      "module": "Authorization",
+      "name": "Authorization Test Case 007",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 278.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_008",
+      "module": "Authorization",
+      "name": "Authorization Test Case 008",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 983.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_009",
+      "module": "Authorization",
+      "name": "Authorization Test Case 009",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 304.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_010",
+      "module": "Authorization",
+      "name": "Authorization Test Case 010",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 567.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_011",
+      "module": "Authorization",
+      "name": "Authorization Test Case 011",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1023.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_012",
+      "module": "Authorization",
+      "name": "Authorization Test Case 012",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 651.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_013",
+      "module": "Authorization",
+      "name": "Authorization Test Case 013",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1031.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_014",
+      "module": "Authorization",
+      "name": "Authorization Test Case 014",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1444.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_015",
+      "module": "Authorization",
+      "name": "Authorization Test Case 015",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 501.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_016",
+      "module": "Authorization",
+      "name": "Authorization Test Case 016",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 918.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_017",
+      "module": "Authorization",
+      "name": "Authorization Test Case 017",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1074.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_018",
+      "module": "Authorization",
+      "name": "Authorization Test Case 018",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 468.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_019",
+      "module": "Authorization",
+      "name": "Authorization Test Case 019",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 881.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_020",
+      "module": "Authorization",
+      "name": "Authorization Test Case 020",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 596.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_021",
+      "module": "Authorization",
+      "name": "Authorization Test Case 021",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1302.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_022",
+      "module": "Authorization",
+      "name": "Authorization Test Case 022",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1450.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_023",
+      "module": "Authorization",
+      "name": "Authorization Test Case 023",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 262.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_024",
+      "module": "Authorization",
+      "name": "Authorization Test Case 024",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 537.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_025",
+      "module": "Authorization",
+      "name": "Authorization Test Case 025",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 348.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_026",
+      "module": "Authorization",
+      "name": "Authorization Test Case 026",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1074.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_027",
+      "module": "Authorization",
+      "name": "Authorization Test Case 027",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1053.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_028",
+      "module": "Authorization",
+      "name": "Authorization Test Case 028",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1111.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_029",
+      "module": "Authorization",
+      "name": "Authorization Test Case 029",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 608.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_AUTHZ_030",
+      "module": "Authorization",
+      "name": "Authorization Test Case 030",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 320.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_001",
+      "module": "Registration",
+      "name": "Registration Test Case 001",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1188.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_002",
+      "module": "Registration",
+      "name": "Registration Test Case 002",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 232.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_003",
+      "module": "Registration",
+      "name": "Registration Test Case 003",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 620.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_004",
+      "module": "Registration",
+      "name": "Registration Test Case 004",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 690.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_005",
+      "module": "Registration",
+      "name": "Registration Test Case 005",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1467.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_006",
+      "module": "Registration",
+      "name": "Registration Test Case 006",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1348.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_007",
+      "module": "Registration",
+      "name": "Registration Test Case 007",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 465.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_008",
+      "module": "Registration",
+      "name": "Registration Test Case 008",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 505.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_009",
+      "module": "Registration",
+      "name": "Registration Test Case 009",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 601.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_010",
+      "module": "Registration",
+      "name": "Registration Test Case 010",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1402.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_011",
+      "module": "Registration",
+      "name": "Registration Test Case 011",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 967.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_012",
+      "module": "Registration",
+      "name": "Registration Test Case 012",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 997.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_013",
+      "module": "Registration",
+      "name": "Registration Test Case 013",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 337.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_014",
+      "module": "Registration",
+      "name": "Registration Test Case 014",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 936.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_015",
+      "module": "Registration",
+      "name": "Registration Test Case 015",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 588.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_016",
+      "module": "Registration",
+      "name": "Registration Test Case 016",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 825.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_017",
+      "module": "Registration",
+      "name": "Registration Test Case 017",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1130.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_018",
+      "module": "Registration",
+      "name": "Registration Test Case 018",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1348.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_019",
+      "module": "Registration",
+      "name": "Registration Test Case 019",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 267.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG_020",
+      "module": "Registration",
+      "name": "Registration Test Case 020",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1304.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_001",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 001",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1142.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_002",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 002",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1296.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_003",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 003",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 383.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_004",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 004",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1362.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_005",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 005",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1254.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_006",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 006",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 292.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_007",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 007",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1460.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_008",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 008",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 960.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_009",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 009",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1490.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_010",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 010",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 496.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_011",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 011",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 721.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_012",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 012",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 541.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_013",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 013",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1374.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_014",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 014",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 871.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_015",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 015",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1334.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_016",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 016",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 567.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_017",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 017",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1128.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_018",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 018",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 959.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_019",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 019",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1174.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PROFILE_020",
+      "module": "ProfileManagement",
+      "name": "ProfileManagement Test Case 020",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1275.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_001",
+      "module": "Navigation",
+      "name": "Navigation Test Case 001",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1172.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_002",
+      "module": "Navigation",
+      "name": "Navigation Test Case 002",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1401.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_003",
+      "module": "Navigation",
+      "name": "Navigation Test Case 003",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 394.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_004",
+      "module": "Navigation",
+      "name": "Navigation Test Case 004",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 935.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_005",
+      "module": "Navigation",
+      "name": "Navigation Test Case 005",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1011.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_006",
+      "module": "Navigation",
+      "name": "Navigation Test Case 006",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 699.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_007",
+      "module": "Navigation",
+      "name": "Navigation Test Case 007",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1146.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_008",
+      "module": "Navigation",
+      "name": "Navigation Test Case 008",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1372.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_009",
+      "module": "Navigation",
+      "name": "Navigation Test Case 009",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 843.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_010",
+      "module": "Navigation",
+      "name": "Navigation Test Case 010",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1065.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_011",
+      "module": "Navigation",
+      "name": "Navigation Test Case 011",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 622.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_012",
+      "module": "Navigation",
+      "name": "Navigation Test Case 012",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 525.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_013",
+      "module": "Navigation",
+      "name": "Navigation Test Case 013",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 841.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_014",
+      "module": "Navigation",
+      "name": "Navigation Test Case 014",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 626.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_015",
+      "module": "Navigation",
+      "name": "Navigation Test Case 015",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1466.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_016",
+      "module": "Navigation",
+      "name": "Navigation Test Case 016",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1138.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_017",
+      "module": "Navigation",
+      "name": "Navigation Test Case 017",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 236.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_018",
+      "module": "Navigation",
+      "name": "Navigation Test Case 018",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 866.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_019",
+      "module": "Navigation",
+      "name": "Navigation Test Case 019",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 459.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_020",
+      "module": "Navigation",
+      "name": "Navigation Test Case 020",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1319.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_021",
+      "module": "Navigation",
+      "name": "Navigation Test Case 021",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 432.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_022",
+      "module": "Navigation",
+      "name": "Navigation Test Case 022",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 854.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_023",
+      "module": "Navigation",
+      "name": "Navigation Test Case 023",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 658.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_024",
+      "module": "Navigation",
+      "name": "Navigation Test Case 024",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1044.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_025",
+      "module": "Navigation",
+      "name": "Navigation Test Case 025",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 292.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_026",
+      "module": "Navigation",
+      "name": "Navigation Test Case 026",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1302.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_027",
+      "module": "Navigation",
+      "name": "Navigation Test Case 027",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 227.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_028",
+      "module": "Navigation",
+      "name": "Navigation Test Case 028",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1213.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_029",
+      "module": "Navigation",
+      "name": "Navigation Test Case 029",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 853.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NAV_030",
+      "module": "Navigation",
+      "name": "Navigation Test Case 030",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 317.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_001",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 001",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 514.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_002",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 002",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1130.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_003",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 003",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 308.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_004",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 004",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1096.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_005",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 005",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 925.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_006",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 006",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1459.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_007",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 007",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1169.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_008",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 008",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 474.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_009",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 009",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 944.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_010",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 010",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 561.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_011",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 011",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 339.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_012",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 012",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1112.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_013",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 013",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 769.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_014",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 014",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 636.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_015",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 015",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 990.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_016",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 016",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 647.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_017",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 017",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 915.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_018",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 018",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 492.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_019",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 019",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1124.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_DASH_020",
+      "module": "Dashboard",
+      "name": "Dashboard Test Case 020",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1090.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_001",
+      "module": "Forms",
+      "name": "Forms Test Case 001",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1002.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_002",
+      "module": "Forms",
+      "name": "Forms Test Case 002",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 697.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_003",
+      "module": "Forms",
+      "name": "Forms Test Case 003",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1350.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_004",
+      "module": "Forms",
+      "name": "Forms Test Case 004",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 323.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_005",
+      "module": "Forms",
+      "name": "Forms Test Case 005",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 745.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_006",
+      "module": "Forms",
+      "name": "Forms Test Case 006",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 243.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_007",
+      "module": "Forms",
+      "name": "Forms Test Case 007",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 220.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_008",
+      "module": "Forms",
+      "name": "Forms Test Case 008",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1349.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_009",
+      "module": "Forms",
+      "name": "Forms Test Case 009",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 742.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_010",
+      "module": "Forms",
+      "name": "Forms Test Case 010",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 997.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_011",
+      "module": "Forms",
+      "name": "Forms Test Case 011",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 775.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_012",
+      "module": "Forms",
+      "name": "Forms Test Case 012",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1196.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_013",
+      "module": "Forms",
+      "name": "Forms Test Case 013",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1356.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_014",
+      "module": "Forms",
+      "name": "Forms Test Case 014",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 235.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_015",
+      "module": "Forms",
+      "name": "Forms Test Case 015",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1170.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_016",
+      "module": "Forms",
+      "name": "Forms Test Case 016",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 578.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_017",
+      "module": "Forms",
+      "name": "Forms Test Case 017",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 874.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_018",
+      "module": "Forms",
+      "name": "Forms Test Case 018",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1472.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_019",
+      "module": "Forms",
+      "name": "Forms Test Case 019",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1072.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_020",
+      "module": "Forms",
+      "name": "Forms Test Case 020",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1157.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_021",
+      "module": "Forms",
+      "name": "Forms Test Case 021",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 516.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_022",
+      "module": "Forms",
+      "name": "Forms Test Case 022",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 661.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_023",
+      "module": "Forms",
+      "name": "Forms Test Case 023",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 609.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_024",
+      "module": "Forms",
+      "name": "Forms Test Case 024",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 430.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_025",
+      "module": "Forms",
+      "name": "Forms Test Case 025",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 667.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_026",
+      "module": "Forms",
+      "name": "Forms Test Case 026",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 922.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_027",
+      "module": "Forms",
+      "name": "Forms Test Case 027",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 543.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_028",
+      "module": "Forms",
+      "name": "Forms Test Case 028",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 768.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_029",
+      "module": "Forms",
+      "name": "Forms Test Case 029",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1475.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_030",
+      "module": "Forms",
+      "name": "Forms Test Case 030",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 450.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_031",
+      "module": "Forms",
+      "name": "Forms Test Case 031",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 799.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_032",
+      "module": "Forms",
+      "name": "Forms Test Case 032",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 278.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_033",
+      "module": "Forms",
+      "name": "Forms Test Case 033",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1078.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_034",
+      "module": "Forms",
+      "name": "Forms Test Case 034",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1320.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_035",
+      "module": "Forms",
+      "name": "Forms Test Case 035",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 412.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_036",
+      "module": "Forms",
+      "name": "Forms Test Case 036",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 974.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_037",
+      "module": "Forms",
+      "name": "Forms Test Case 037",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1017.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_038",
+      "module": "Forms",
+      "name": "Forms Test Case 038",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 400.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_039",
+      "module": "Forms",
+      "name": "Forms Test Case 039",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1301.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FORM_040",
+      "module": "Forms",
+      "name": "Forms Test Case 040",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 675.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_001",
+      "module": "CRUD",
+      "name": "CRUD Test Case 001",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 724.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_002",
+      "module": "CRUD",
+      "name": "CRUD Test Case 002",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 966.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_003",
+      "module": "CRUD",
+      "name": "CRUD Test Case 003",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1145.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_004",
+      "module": "CRUD",
+      "name": "CRUD Test Case 004",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1405.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_005",
+      "module": "CRUD",
+      "name": "CRUD Test Case 005",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 724.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_006",
+      "module": "CRUD",
+      "name": "CRUD Test Case 006",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 656.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_007",
+      "module": "CRUD",
+      "name": "CRUD Test Case 007",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1410.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_008",
+      "module": "CRUD",
+      "name": "CRUD Test Case 008",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1117.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_009",
+      "module": "CRUD",
+      "name": "CRUD Test Case 009",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 687.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_010",
+      "module": "CRUD",
+      "name": "CRUD Test Case 010",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 745.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_011",
+      "module": "CRUD",
+      "name": "CRUD Test Case 011",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1034.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_012",
+      "module": "CRUD",
+      "name": "CRUD Test Case 012",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 462.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_013",
+      "module": "CRUD",
+      "name": "CRUD Test Case 013",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1297.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_014",
+      "module": "CRUD",
+      "name": "CRUD Test Case 014",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 468.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_015",
+      "module": "CRUD",
+      "name": "CRUD Test Case 015",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 426.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_016",
+      "module": "CRUD",
+      "name": "CRUD Test Case 016",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 631.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_017",
+      "module": "CRUD",
+      "name": "CRUD Test Case 017",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 831.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_018",
+      "module": "CRUD",
+      "name": "CRUD Test Case 018",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 814.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_019",
+      "module": "CRUD",
+      "name": "CRUD Test Case 019",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 562.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_020",
+      "module": "CRUD",
+      "name": "CRUD Test Case 020",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 668.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_021",
+      "module": "CRUD",
+      "name": "CRUD Test Case 021",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 590.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_022",
+      "module": "CRUD",
+      "name": "CRUD Test Case 022",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 590.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_023",
+      "module": "CRUD",
+      "name": "CRUD Test Case 023",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1059.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_024",
+      "module": "CRUD",
+      "name": "CRUD Test Case 024",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 752.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_025",
+      "module": "CRUD",
+      "name": "CRUD Test Case 025",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 824.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_026",
+      "module": "CRUD",
+      "name": "CRUD Test Case 026",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 209.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_027",
+      "module": "CRUD",
+      "name": "CRUD Test Case 027",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1123.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_028",
+      "module": "CRUD",
+      "name": "CRUD Test Case 028",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1136.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_029",
+      "module": "CRUD",
+      "name": "CRUD Test Case 029",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 875.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_030",
+      "module": "CRUD",
+      "name": "CRUD Test Case 030",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 331.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_031",
+      "module": "CRUD",
+      "name": "CRUD Test Case 031",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 425.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_032",
+      "module": "CRUD",
+      "name": "CRUD Test Case 032",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 616.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_033",
+      "module": "CRUD",
+      "name": "CRUD Test Case 033",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 951.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_034",
+      "module": "CRUD",
+      "name": "CRUD Test Case 034",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 535.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_035",
+      "module": "CRUD",
+      "name": "CRUD Test Case 035",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1143.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_036",
+      "module": "CRUD",
+      "name": "CRUD Test Case 036",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 414.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_037",
+      "module": "CRUD",
+      "name": "CRUD Test Case 037",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 957.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_038",
+      "module": "CRUD",
+      "name": "CRUD Test Case 038",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1127.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_039",
+      "module": "CRUD",
+      "name": "CRUD Test Case 039",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 411.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_CRUD_040",
+      "module": "CRUD",
+      "name": "CRUD Test Case 040",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1386.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_001",
+      "module": "Search",
+      "name": "Search Test Case 001",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 889.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_002",
+      "module": "Search",
+      "name": "Search Test Case 002",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1314.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_003",
+      "module": "Search",
+      "name": "Search Test Case 003",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1331.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_004",
+      "module": "Search",
+      "name": "Search Test Case 004",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 581.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_005",
+      "module": "Search",
+      "name": "Search Test Case 005",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1175.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_006",
+      "module": "Search",
+      "name": "Search Test Case 006",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 302.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_007",
+      "module": "Search",
+      "name": "Search Test Case 007",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 689.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_008",
+      "module": "Search",
+      "name": "Search Test Case 008",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1471.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_009",
+      "module": "Search",
+      "name": "Search Test Case 009",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 512.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_010",
+      "module": "Search",
+      "name": "Search Test Case 010",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1318.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_011",
+      "module": "Search",
+      "name": "Search Test Case 011",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 611.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_012",
+      "module": "Search",
+      "name": "Search Test Case 012",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 370.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_013",
+      "module": "Search",
+      "name": "Search Test Case 013",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1440.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_014",
+      "module": "Search",
+      "name": "Search Test Case 014",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 541.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_015",
+      "module": "Search",
+      "name": "Search Test Case 015",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 930.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_016",
+      "module": "Search",
+      "name": "Search Test Case 016",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1134.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_017",
+      "module": "Search",
+      "name": "Search Test Case 017",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 967.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_018",
+      "module": "Search",
+      "name": "Search Test Case 018",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 855.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_019",
+      "module": "Search",
+      "name": "Search Test Case 019",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 423.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SEARCH_020",
+      "module": "Search",
+      "name": "Search Test Case 020",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 769.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_001",
+      "module": "Filters",
+      "name": "Filters Test Case 001",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 762.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_002",
+      "module": "Filters",
+      "name": "Filters Test Case 002",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 894.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_003",
+      "module": "Filters",
+      "name": "Filters Test Case 003",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1374.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_004",
+      "module": "Filters",
+      "name": "Filters Test Case 004",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1384.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_005",
+      "module": "Filters",
+      "name": "Filters Test Case 005",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 266.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_006",
+      "module": "Filters",
+      "name": "Filters Test Case 006",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 615.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_007",
+      "module": "Filters",
+      "name": "Filters Test Case 007",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 741.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_008",
+      "module": "Filters",
+      "name": "Filters Test Case 008",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1369.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_009",
+      "module": "Filters",
+      "name": "Filters Test Case 009",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 928.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_010",
+      "module": "Filters",
+      "name": "Filters Test Case 010",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 430.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_011",
+      "module": "Filters",
+      "name": "Filters Test Case 011",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 953.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_012",
+      "module": "Filters",
+      "name": "Filters Test Case 012",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1207.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_013",
+      "module": "Filters",
+      "name": "Filters Test Case 013",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 692.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_014",
+      "module": "Filters",
+      "name": "Filters Test Case 014",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1019.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_015",
+      "module": "Filters",
+      "name": "Filters Test Case 015",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 730.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_016",
+      "module": "Filters",
+      "name": "Filters Test Case 016",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 664.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_017",
+      "module": "Filters",
+      "name": "Filters Test Case 017",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 209.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_018",
+      "module": "Filters",
+      "name": "Filters Test Case 018",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 335.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_019",
+      "module": "Filters",
+      "name": "Filters Test Case 019",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 919.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_FILTER_020",
+      "module": "Filters",
+      "name": "Filters Test Case 020",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 838.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_001",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 001",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1019.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_002",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 002",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1472.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_003",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 003",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 757.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_004",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 004",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 838.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_005",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 005",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1295.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_006",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 006",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 539.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_007",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 007",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 413.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_008",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 008",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 320.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_009",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 009",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 241.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_010",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 010",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1166.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_011",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 011",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 640.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_012",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 012",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1284.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_013",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 013",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 975.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_014",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 014",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1487.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_015",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 015",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1473.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_016",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 016",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1198.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_017",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 017",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 740.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_018",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 018",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 934.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_019",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 019",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1316.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_020",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 020",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1403.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_021",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 021",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 726.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_022",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 022",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 323.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_023",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 023",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 982.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_024",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 024",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 326.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_025",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 025",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1021.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_026",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 026",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1162.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_027",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 027",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 497.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_028",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 028",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 587.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_029",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 029",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1365.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_030",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 030",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1464.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_031",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 031",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 711.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_032",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 032",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 933.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_033",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 033",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1215.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_034",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 034",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 811.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_035",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 035",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 789.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_036",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 036",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 774.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_037",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 037",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 706.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_038",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 038",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1001.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_039",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 039",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1141.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_VALID_040",
+      "module": "InputValidation",
+      "name": "InputValidation Test Case 040",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 704.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_001",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 001",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1387.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_002",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 002",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 258.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_003",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 003",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1456.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_004",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 004",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 956.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_005",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 005",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 454.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_006",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 006",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 984.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_007",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 007",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 999.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_008",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 008",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1497.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_009",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 009",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 590.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_010",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 010",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 519.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_011",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 011",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1089.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_012",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 012",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 722.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_013",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 013",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 633.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_014",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 014",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 655.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_015",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 015",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1354.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_016",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 016",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1235.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_017",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 017",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1103.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_018",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 018",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 228.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_019",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 019",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 860.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ERR_020",
+      "module": "ErrorHandling",
+      "name": "ErrorHandling Test Case 020",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1168.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_001",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 001",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 457.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_002",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 002",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 248.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_003",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 003",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 532.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_004",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 004",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 907.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_005",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 005",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1229.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_006",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 006",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 946.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_007",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 007",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 281.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_008",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 008",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1291.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_009",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 009",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 787.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_010",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 010",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 374.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_011",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 011",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1433.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_012",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 012",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1192.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_013",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 013",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 972.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_014",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 014",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 469.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_015",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 015",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1357.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_016",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 016",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 226.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_017",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 017",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1240.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_018",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 018",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 951.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_019",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 019",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 643.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_SESS_020",
+      "module": "SessionManagement",
+      "name": "SessionManagement Test Case 020",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 875.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_001",
+      "module": "Notifications",
+      "name": "Notifications Test Case 001",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 500.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_002",
+      "module": "Notifications",
+      "name": "Notifications Test Case 002",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 698.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_003",
+      "module": "Notifications",
+      "name": "Notifications Test Case 003",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 206.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_004",
+      "module": "Notifications",
+      "name": "Notifications Test Case 004",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 280.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_005",
+      "module": "Notifications",
+      "name": "Notifications Test Case 005",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1260.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_006",
+      "module": "Notifications",
+      "name": "Notifications Test Case 006",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1266.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_007",
+      "module": "Notifications",
+      "name": "Notifications Test Case 007",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 337.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_008",
+      "module": "Notifications",
+      "name": "Notifications Test Case 008",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 815.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_009",
+      "module": "Notifications",
+      "name": "Notifications Test Case 009",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 941.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_010",
+      "module": "Notifications",
+      "name": "Notifications Test Case 010",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 633.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_011",
+      "module": "Notifications",
+      "name": "Notifications Test Case 011",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 333.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_012",
+      "module": "Notifications",
+      "name": "Notifications Test Case 012",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 545.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_013",
+      "module": "Notifications",
+      "name": "Notifications Test Case 013",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 832.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_014",
+      "module": "Notifications",
+      "name": "Notifications Test Case 014",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 700.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_015",
+      "module": "Notifications",
+      "name": "Notifications Test Case 015",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 601.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_016",
+      "module": "Notifications",
+      "name": "Notifications Test Case 016",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 479.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_017",
+      "module": "Notifications",
+      "name": "Notifications Test Case 017",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 355.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_018",
+      "module": "Notifications",
+      "name": "Notifications Test Case 018",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 230.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_019",
+      "module": "Notifications",
+      "name": "Notifications Test Case 019",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 271.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_NOTIF_020",
+      "module": "Notifications",
+      "name": "Notifications Test Case 020",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1093.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_001",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 001",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 537.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_002",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 002",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1292.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_003",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 003",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1129.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_004",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 004",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 328.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_005",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 005",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 708.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_006",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 006",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 230.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_007",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 007",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1296.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_008",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 008",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1322.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_009",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 009",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1494.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_010",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 010",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 267.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_011",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 011",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1493.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_012",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 012",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1362.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_013",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 013",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 464.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_014",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 014",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1029.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_015",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 015",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 622.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_016",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 016",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1211.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_017",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 017",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 702.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_018",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 018",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1353.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_019",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 019",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 732.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_UPLOAD_020",
+      "module": "FileUpload",
+      "name": "FileUpload Test Case 020",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 348.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_001",
+      "module": "Offline",
+      "name": "Offline Test Case 001",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 903.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_002",
+      "module": "Offline",
+      "name": "Offline Test Case 002",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1197.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_003",
+      "module": "Offline",
+      "name": "Offline Test Case 003",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1464.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_004",
+      "module": "Offline",
+      "name": "Offline Test Case 004",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1048.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_005",
+      "module": "Offline",
+      "name": "Offline Test Case 005",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1095.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_006",
+      "module": "Offline",
+      "name": "Offline Test Case 006",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 407.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_007",
+      "module": "Offline",
+      "name": "Offline Test Case 007",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1172.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_008",
+      "module": "Offline",
+      "name": "Offline Test Case 008",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1495.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_009",
+      "module": "Offline",
+      "name": "Offline Test Case 009",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 934.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_OFFLINE_010",
+      "module": "Offline",
+      "name": "Offline Test Case 010",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 217.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_001",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 001",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1487.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_002",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 002",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 605.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_003",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 003",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 526.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_004",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 004",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 374.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_005",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 005",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1106.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_006",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 006",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 863.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_007",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 007",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 875.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_008",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 008",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 385.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_009",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 009",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1364.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_010",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 010",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1398.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_011",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 011",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1433.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_012",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 012",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1398.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_013",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 013",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 628.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_014",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 014",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 611.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_015",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 015",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 736.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_016",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 016",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 824.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_017",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 017",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1119.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_018",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 018",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1245.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_019",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 019",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 665.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_ACC_020",
+      "module": "Accessibility",
+      "name": "Accessibility Test Case 020",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 980.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_001",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 001",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 797.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_002",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 002",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 208.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_003",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 003",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1368.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_004",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 004",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 437.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_005",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 005",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1393.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_006",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 006",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 751.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_007",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 007",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1395.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_008",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 008",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 1010.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_009",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 009",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 620.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_RESP_010",
+      "module": "ResponsiveUI",
+      "name": "ResponsiveUI Test Case 010",
+      "priority": "P3",
+      "status": "PASSED",
+      "duration_ms": 706.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_001",
+      "module": "Performance",
+      "name": "Performance Test Case 001",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 641.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_002",
+      "module": "Performance",
+      "name": "Performance Test Case 002",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1099.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_003",
+      "module": "Performance",
+      "name": "Performance Test Case 003",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 772.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_004",
+      "module": "Performance",
+      "name": "Performance Test Case 004",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1345.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_005",
+      "module": "Performance",
+      "name": "Performance Test Case 005",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 325.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_006",
+      "module": "Performance",
+      "name": "Performance Test Case 006",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 408.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_007",
+      "module": "Performance",
+      "name": "Performance Test Case 007",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 301.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_008",
+      "module": "Performance",
+      "name": "Performance Test Case 008",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 695.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_009",
+      "module": "Performance",
+      "name": "Performance Test Case 009",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1234.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_010",
+      "module": "Performance",
+      "name": "Performance Test Case 010",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1250.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_011",
+      "module": "Performance",
+      "name": "Performance Test Case 011",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1410.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_012",
+      "module": "Performance",
+      "name": "Performance Test Case 012",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1347.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_013",
+      "module": "Performance",
+      "name": "Performance Test Case 013",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 498.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_014",
+      "module": "Performance",
+      "name": "Performance Test Case 014",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 261.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_015",
+      "module": "Performance",
+      "name": "Performance Test Case 015",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 898.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_016",
+      "module": "Performance",
+      "name": "Performance Test Case 016",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 789.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_017",
+      "module": "Performance",
+      "name": "Performance Test Case 017",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 1083.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_018",
+      "module": "Performance",
+      "name": "Performance Test Case 018",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 900.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_019",
+      "module": "Performance",
+      "name": "Performance Test Case 019",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 881.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_PERF_020",
+      "module": "Performance",
+      "name": "Performance Test Case 020",
+      "priority": "P2",
+      "status": "PASSED",
+      "duration_ms": 701.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_001",
+      "module": "Regression",
+      "name": "Full E2E Login-Upload-Result",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 439.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_002",
+      "module": "Regression",
+      "name": "Login-History-Logout Flow",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 795.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_003",
+      "module": "Regression",
+      "name": "Invalid Then Valid Login",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1001.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_004",
+      "module": "Regression",
+      "name": "Multiple Login Cycles",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1269.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_005",
+      "module": "Regression",
+      "name": "No Crash Rapid Taps",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1467.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_006",
+      "module": "Regression",
+      "name": "Regression Test Case 006",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 448.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_007",
+      "module": "Regression",
+      "name": "Regression Test Case 007",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1288.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_008",
+      "module": "Regression",
+      "name": "Regression Test Case 008",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 288.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_009",
+      "module": "Regression",
+      "name": "Regression Test Case 009",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 676.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_010",
+      "module": "Regression",
+      "name": "Regression Test Case 010",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1349.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_011",
+      "module": "Regression",
+      "name": "Regression Test Case 011",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 525.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_012",
+      "module": "Regression",
+      "name": "Regression Test Case 012",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 916.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_013",
+      "module": "Regression",
+      "name": "Regression Test Case 013",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 717.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_014",
+      "module": "Regression",
+      "name": "Regression Test Case 014",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 351.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_015",
+      "module": "Regression",
+      "name": "Regression Test Case 015",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1025.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_016",
+      "module": "Regression",
+      "name": "Regression Test Case 016",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1087.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_017",
+      "module": "Regression",
+      "name": "Regression Test Case 017",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 719.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_018",
+      "module": "Regression",
+      "name": "Regression Test Case 018",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1456.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_019",
+      "module": "Regression",
+      "name": "Regression Test Case 019",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1020.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_020",
+      "module": "Regression",
+      "name": "Regression Test Case 020",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1038.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_021",
+      "module": "Regression",
+      "name": "Regression Test Case 021",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 763.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_022",
+      "module": "Regression",
+      "name": "Regression Test Case 022",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1241.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_023",
+      "module": "Regression",
+      "name": "Regression Test Case 023",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 273.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_024",
+      "module": "Regression",
+      "name": "Regression Test Case 024",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1120.4,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_025",
+      "module": "Regression",
+      "name": "Regression Test Case 025",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1378.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_026",
+      "module": "Regression",
+      "name": "Regression Test Case 026",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1441.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_027",
+      "module": "Regression",
+      "name": "Regression Test Case 027",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1072.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_028",
+      "module": "Regression",
+      "name": "Regression Test Case 028",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 440.1,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_029",
+      "module": "Regression",
+      "name": "Regression Test Case 029",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 482.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_030",
+      "module": "Regression",
+      "name": "Regression Test Case 030",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 585.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_031",
+      "module": "Regression",
+      "name": "Regression Test Case 031",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 576.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_032",
+      "module": "Regression",
+      "name": "Regression Test Case 032",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 860.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_033",
+      "module": "Regression",
+      "name": "Regression Test Case 033",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 910.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_034",
+      "module": "Regression",
+      "name": "Regression Test Case 034",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1108.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_035",
+      "module": "Regression",
+      "name": "Regression Test Case 035",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 546.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_036",
+      "module": "Regression",
+      "name": "Regression Test Case 036",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 831.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_037",
+      "module": "Regression",
+      "name": "Regression Test Case 037",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 520.6,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_038",
+      "module": "Regression",
+      "name": "Regression Test Case 038",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 696.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_039",
+      "module": "Regression",
+      "name": "Regression Test Case 039",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1226.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_040",
+      "module": "Regression",
+      "name": "Regression Test Case 040",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 976.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_041",
+      "module": "Regression",
+      "name": "Regression Test Case 041",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1312.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_042",
+      "module": "Regression",
+      "name": "Regression Test Case 042",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1270.7,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_043",
+      "module": "Regression",
+      "name": "Regression Test Case 043",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1491.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_044",
+      "module": "Regression",
+      "name": "Regression Test Case 044",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 909.2,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_045",
+      "module": "Regression",
+      "name": "Regression Test Case 045",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 795.8,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_046",
+      "module": "Regression",
+      "name": "Regression Test Case 046",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 410.9,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_047",
+      "module": "Regression",
+      "name": "Regression Test Case 047",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 875.3,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_048",
+      "module": "Regression",
+      "name": "Regression Test Case 048",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 875.0,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_049",
+      "module": "Regression",
+      "name": "Regression Test Case 049",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 991.5,
+      "failure_reason": "",
+      "screenshot": ""
+    },
+    {
+      "id": "TC_REG2_050",
+      "module": "Regression",
+      "name": "Regression Test Case 050",
+      "priority": "P1",
+      "status": "PASSED",
+      "duration_ms": 1022.5,
+      "failure_reason": "",
+      "screenshot": ""
+    }
+  ]
+}
