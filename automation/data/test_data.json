@@ -1,0 +1,52 @@
+{
+  "valid_users": [
+    {
+      "email": "john.doe@example.com",
+      "password": "password123",
+      "name": "John Doe",
+      "id": "user_1"
+    },
+    {
+      "email": "sindhuintha@gmail.com",
+      "password": "Sindhu@30",
+      "name": "Sindhu",
+      "id": "user_2"
+    }
+  ],
+  "invalid_users": [
+    {"email": "wrong@example.com", "password": "wrongpass"},
+    {"email": "john.doe@example.com", "password": "incorrect"},
+    {"email": "notregistered@test.com", "password": "anypass"},
+    {"email": "", "password": ""},
+    {"email": "invalidemail", "password": "pass123"},
+    {"email": "sql@test.com", "password": "' OR '1'='1"},
+    {"email": "xss@test.com", "password": "<script>alert(1)</script>"}
+  ],
+  "registration": {
+    "valid_new_user": {
+      "name": "New Test User",
+      "email": "newuser_@test_RAND@.com",
+      "password": "ValidPass@123"
+    },
+    "invalid_emails": ["notanemail", "@nodomain", "no@", "spaces in@email.com"],
+    "weak_passwords": ["123", "abc", "password", "12345678"],
+    "strong_passwords": ["Str0ng@Pass!", "C0mplex#1!", "V@lid_Pass9"]
+  },
+  "profile": {
+    "update_name": "Updated Test Name",
+    "update_email": "updated_@test_RAND@.com",
+    "new_password": "NewPass@123!",
+    "old_password": "password123"
+  },
+  "search": {
+    "valid_queries": ["Real", "Tempered", "Deepfake", "WIN_"],
+    "no_result_queries": ["zzznonexistent999", "xxxxxxxxx"],
+    "special_chars": ["@", "#", "!@#$%"]
+  },
+  "image_files": {
+    "valid_jpeg": "data/test_images/sample_authentic.jpg",
+    "valid_png": "data/test_images/sample_ai.png",
+    "large_file": "data/test_images/large_4k.jpg",
+    "invalid_file": "data/test_images/corrupted.txt"
+  }
+}

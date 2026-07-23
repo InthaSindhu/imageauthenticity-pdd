@@ -1,0 +1,37 @@
+{
+  "appium": {
+    "host": "127.0.0.1",
+    "port": 4723,
+    "timeout": 120
+  },
+  "capabilities": {
+    "platformName": "Android",
+    "automationName": "UiAutomator2",
+    "deviceName": "E2E_Emulator",
+    "platformVersion": "14",
+    "appPackage": "com.imageauth.verifier",
+    "appActivity": "com.imageauth.verifier.MainActivity",
+    "noReset": false,
+    "fullReset": false,
+    "autoGrantPermissions": true,
+    "newCommandTimeout": 120,
+    "uiautomator2ServerLaunchTimeout": 60000,
+    "uiautomator2ServerInstallTimeout": 60000,
+    "androidInstallTimeout": 120000,
+    "skipServerInstallation": false,
+    "adbExecTimeout": 60000
+  },
+  "timeouts": {
+    "implicit": 10,
+    "explicit": 30,
+    "pageLoad": 60,
+    "script": 10
+  },
+  "test": {
+    "retry_count": 2,
+    "parallel_threads": 2,
+    "screenshot_on_failure": true,
+    "screenshot_on_pass": false,
+    "log_level": "INFO"
+  }
+}

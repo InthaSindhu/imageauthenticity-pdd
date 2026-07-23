@@ -1,0 +1,22 @@
+{
+  "mode": "api",
+  "num_vusers": 25,
+  "duration_sec": 21.16,
+  "total_requests": 54,
+  "success_count": 29,
+  "failure_count": 25,
+  "error_rate_pct": 46.3,
+  "rps": 2.55,
+  "min_ms": 2937.84,
+  "max_ms": 12087.93,
+  "avg_ms": 9255.73,
+  "p50_ms": 9745.6,
+  "p90_ms": 12061.05,
+  "p95_ms": 12073.96,
+  "p99_ms": 12073.96,
+  "status_codes": {
+    "200": 29,
+    "504": 24,
+    "503": 1
+  }
+}

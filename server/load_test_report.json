@@ -1,0 +1,20 @@
+{
+  "num_vusers": 100,
+  "duration_sec": 91.31,
+  "total_requests": 224,
+  "success_count": 28,
+  "failure_count": 196,
+  "error_rate_pct": 87.5,
+  "rps": 2.45,
+  "min_ms": 3137.36,
+  "max_ms": 32100.49,
+  "avg_ms": 30072.7,
+  "p50_ms": 32054.4,
+  "p90_ms": 32073.86,
+  "p95_ms": 32079.05,
+  "p99_ms": 32087.09,
+  "status_codes": {
+    "200": 28,
+    "500": 196
+  }
+}

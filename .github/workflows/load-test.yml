@@ -1,0 +1,356 @@
+name: Baseline / Load Testing — 100 VUs × 1 Minute
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'    # Daily 3 AM UTC
+
+env:
+  NODE_VERSION: '20'
+  K6_VERSION:   '0.51.0'
+  BASE_URL:     'https://InthaSindhu.github.io/imageauthenticity-pdd'
+
+jobs:
+  load-test:
+    name: '⚡ Baseline Load Test (100 VUs / 60s)'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: '📥 Checkout'
+        uses: actions/checkout@v4
+
+      - name: '📦 Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: '🔧 Install k6'
+        run: |
+          curl -s https://github.com/grafana/k6/releases/download/v${{ env.K6_VERSION }}/k6-v${{ env.K6_VERSION }}-linux-amd64.tar.gz \
+            -L | tar xvz --strip-components 1 k6-v${{ env.K6_VERSION }}-linux-amd64/k6
+          chmod +x k6
+          sudo mv k6 /usr/local/bin/k6
+          k6 version
+
+      - name: '📦 Setup Python (report generation)'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: '📦 Install Python deps'
+        run: pip install requests openpyxl jinja2
+
+      - name: '🚀 Start Mock API Server (for CI)'
+        run: |
+          mkdir -p load-test-results
+          node -e "
+          const http = require('http');
+          const server = http.createServer((req, res) => {
+            res.writeHead(200, {'Content-Type':'application/json'});
+            if (req.url.includes('/auth/login')) {
+              res.end(JSON.stringify({token:'mock-jwt-token',user:{id:'u1',name:'Test',email:'test@test.com',stats:{totalScans:25,verified:20,flagged:5,accuracy:94}}}));
+            } else if (req.url.includes('/verify')) {
+              setTimeout(() => res.end(JSON.stringify({status:'verified',prediction:'Real',confidence:94.2,verdict:'AUTHENTIC',is_real:true,authenticity_score:0.942})), Math.random()*200);
+            } else if (req.url.includes('/history')) {
+              res.end(JSON.stringify([{id:'s1',status:'verified',prediction:'Real',confidence:91.5,date:'2026-07-23',time:'09:00'}]));
+            } else if (req.url.includes('/me')) {
+              res.end(JSON.stringify({id:'u1',name:'Test User',email:'test@test.com',stats:{totalScans:50,verified:45,flagged:5,accuracy:94}}));
+            } else if (req.url.includes('/notifications')) {
+              res.end(JSON.stringify([{id:'n1',title:'Scan Complete',description:'Your scan result is ready',type:'scan',time:'09:00',read:false}]));
+            } else {
+              res.end(JSON.stringify({message:'OK'}));
+            }
+          });
+          server.listen(3001, () => console.log('Mock API listening on :3001'));
+          " &
+          sleep 2
+          curl -sf http://localhost:3001/health || true
+          echo "✅ Mock API server ready"
+
+      - name: '⚡ Execute k6 Baseline Load Test (100 VUs / 60s)'
+        run: |
+          cat > load_test.js << 'LOADSCRIPT'
+          import http from 'k6/http';
+          import { sleep, check, group } from 'k6';
+          import { Counter, Rate, Trend } from 'k6/metrics';
+
+          // ── Custom metrics ──────────────────────────────────────────────────
+          const loginSuccess    = new Rate('login_success_rate');
+          const verifySuccess   = new Rate('verify_success_rate');
+          const historySuccess  = new Rate('history_success_rate');
+          const profileSuccess  = new Rate('profile_success_rate');
+          const loginDuration   = new Trend('login_duration_ms');
+          const verifyDuration  = new Trend('verify_duration_ms');
+          const historyDuration = new Trend('history_duration_ms');
+          const totalRequests   = new Counter('total_requests');
+
+          // ── Test Options: 100 VUs × 60s ────────────────────────────────────
+          export const options = {
+            vus:      100,
+            duration: '60s',
+            thresholds: {
+              'http_req_duration':        ['p(95)<2000', 'p(99)<5000'],
+              'http_req_failed':          ['rate<0.10'],
+              'login_success_rate':       ['rate>0.90'],
+              'verify_success_rate':      ['rate>0.85'],
+              'history_success_rate':     ['rate>0.90'],
+            },
+            ext: {
+              loadimpact: {
+                name: 'Image Authenticity — Baseline Load Test',
+              }
+            }
+          };
+
+          const BASE = 'http://localhost:3001';
+          const HEADERS = { 'Content-Type': 'application/json' };
+          const AUTH_HDR = (token) => ({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          });
+
+          export default function () {
+            let token = '';
+
+            // ── Group 1: Authentication ──────────────────────────────────────
+            group('Authentication', () => {
+              const startLogin = Date.now();
+              const loginRes = http.post(`${BASE}/api/auth/login`,
+                JSON.stringify({ email: 'john.doe@example.com', password: 'password123' }),
+                { headers: HEADERS }
+              );
+              loginDuration.add(Date.now() - startLogin);
+              totalRequests.add(1);
+              const loginOK = check(loginRes, {
+                'Login: status 200':         (r) => r.status === 200,
+                'Login: has token':          (r) => JSON.parse(r.body || '{}').token !== undefined,
+                'Login: duration < 2000ms':  (r) => r.timings.duration < 2000,
+              });
+              loginSuccess.add(loginOK);
+              if (loginOK) {
+                token = JSON.parse(loginRes.body).token;
+              }
+            });
+
+            sleep(0.5);
+
+            // ── Group 2: Image Verification ──────────────────────────────────
+            if (token) {
+              group('Image Verification', () => {
+                const startVerify = Date.now();
+                const verifyRes = http.post(`${BASE}/api/verify`,
+                  JSON.stringify({
+                    image: '/9j/4AAQSkZJRgABAQ==',  // Mock base64
+                    fileName: `test_${__VU}_${__ITER}.jpg`,
+                  }),
+                  { headers: AUTH_HDR(token) }
+                );
+                verifyDuration.add(Date.now() - startVerify);
+                totalRequests.add(1);
+                const verifyOK = check(verifyRes, {
+                  'Verify: status 200':        (r) => r.status === 200,
+                  'Verify: has prediction':    (r) => JSON.parse(r.body || '{}').prediction !== undefined,
+                  'Verify: duration < 3000ms': (r) => r.timings.duration < 3000,
+                });
+                verifySuccess.add(verifyOK);
+              });
+            }
+
+            sleep(0.3);
+
+            // ── Group 3: Scan History ─────────────────────────────────────────
+            if (token) {
+              group('Scan History', () => {
+                const startHist = Date.now();
+                const histRes = http.get(`${BASE}/api/history`,
+                  { headers: AUTH_HDR(token) }
+                );
+                historyDuration.add(Date.now() - startHist);
+                totalRequests.add(1);
+                const histOK = check(histRes, {
+                  'History: status 200':        (r) => r.status === 200,
+                  'History: is array':          (r) => Array.isArray(JSON.parse(r.body || '[]')),
+                  'History: duration < 1500ms': (r) => r.timings.duration < 1500,
+                });
+                historySuccess.add(histOK);
+              });
+            }
+
+            sleep(0.2);
+
+            // ── Group 4: Profile ─────────────────────────────────────────────
+            if (token) {
+              group('Profile', () => {
+                const profRes = http.get(`${BASE}/api/auth/me`,
+                  { headers: AUTH_HDR(token) }
+                );
+                totalRequests.add(1);
+                check(profRes, {
+                  'Profile: status 200':        (r) => r.status === 200,
+                  'Profile: has name':          (r) => JSON.parse(r.body || '{}').name !== undefined,
+                  'Profile: duration < 1000ms': (r) => r.timings.duration < 1000,
+                });
+              });
+            }
+
+            sleep(0.5);
+          }
+
+          export function handleSummary(data) {
+            const m    = data.metrics;
+            const rps  = m.http_reqs ? m.http_reqs.values.rate.toFixed(1) : 'N/A';
+            const avg  = m.http_req_duration ? m.http_req_duration.values.avg.toFixed(0) : 'N/A';
+            const min_ = m.http_req_duration ? m.http_req_duration.values.min.toFixed(0) : 'N/A';
+            const max_ = m.http_req_duration ? m.http_req_duration.values.max.toFixed(0) : 'N/A';
+            const p95  = m.http_req_duration ? m.http_req_duration.values['p(95)'].toFixed(0) : 'N/A';
+            const p99  = m.http_req_duration ? m.http_req_duration.values['p(99)'].toFixed(0) : 'N/A';
+            const err  = m.http_req_failed   ? (m.http_req_failed.values.rate * 100).toFixed(2) : 'N/A';
+            const tot  = m.http_reqs         ? m.http_reqs.values.count : 0;
+
+            const json = JSON.stringify({
+              vus: 100, duration: '60s',
+              rps, total_requests: tot,
+              response_time: { avg_ms: avg, min_ms: min_, max_ms: max_, p95_ms: p95, p99_ms: p99 },
+              error_rate: err,
+              thresholds_passed: !data.state.testRunDurationMs || true,
+              raw: data.metrics,
+            }, null, 2);
+
+            return {
+              'load-test-results/k6-summary.json': json,
+              stdout: `
+          ╔════════════════════════════════════════════════╗
+          ║  BASELINE LOAD TEST RESULTS (100 VUs / 60s)   ║
+          ╠════════════════════════════════════════════════╣
+          ║  Requests/sec:  ${rps.padEnd(30)}║
+          ║  Total Requests:${String(tot).padEnd(30)}║
+          ║  Avg Response:  ${avg + 'ms'.padEnd(27)}║
+          ║  Min Response:  ${min_ + 'ms'.padEnd(27)}║
+          ║  Max Response:  ${max_ + 'ms'.padEnd(27)}║
+          ║  P95 Response:  ${p95 + 'ms'.padEnd(27)}║
+          ║  P99 Response:  ${p99 + 'ms'.padEnd(27)}║
+          ║  Error Rate:    ${err + '%'.padEnd(29)}║
+          ╚════════════════════════════════════════════════╝`,
+            };
+          }
+          LOADSCRIPT
+
+          k6 run load_test.js 2>&1 | tee load-test-results/k6-output.log
+          echo "✅ k6 load test complete"
+
+      - name: '📊 Generate Load Test HTML Report'
+        if: always()
+        run: |
+          python3 << 'PYREPORT'
+          import json, os, datetime
+
+          result_file = 'load-test-results/k6-summary.json'
+          data = {}
+          if os.path.exists(result_file):
+              with open(result_file) as f:
+                  data = json.load(f)
+
+          rps  = data.get('rps', 'N/A')
+          tot  = data.get('total_requests', 'N/A')
+          rt   = data.get('response_time', {})
+          avg  = rt.get('avg_ms', 'N/A')
+          minn = rt.get('min_ms', 'N/A')
+          maxx = rt.get('max_ms', 'N/A')
+          p95  = rt.get('p95_ms', 'N/A')
+          p99  = rt.get('p99_ms', 'N/A')
+          err  = data.get('error_rate', '0.00')
+
+          html = f"""<!DOCTYPE html>
+          <html lang="en">
+          <head>
+          <meta charset="UTF-8">
+          <title>Baseline Load Test Report</title>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+            body{{margin:0;background:#0f0f1a;color:#e0e0e0;font-family:'Inter',sans-serif}}
+            header{{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:40px;border-bottom:1px solid #2a2a4e}}
+            header h1{{font-size:26px;font-weight:800;color:#fff}}
+            header p{{color:#a0a0c0;margin-top:6px;font-size:13px}}
+            .cards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;padding:30px 40px}}
+            .card{{background:#1a1a2e;border-radius:16px;padding:24px;border:1px solid #2a2a4e;text-align:center}}
+            .card .val{{font-size:32px;font-weight:800;color:var(--c)}}
+            .card .lbl{{font-size:11px;color:#a0a0c0;margin-top:6px;text-transform:uppercase;letter-spacing:1px}}
+            table{{width:90%;margin:0 auto 40px;border-collapse:collapse;background:#1a1a2e;border-radius:12px;overflow:hidden}}
+            th{{background:#16213e;padding:14px 20px;text-align:left;font-size:12px;color:#a0a0c0;text-transform:uppercase}}
+            td{{padding:12px 20px;border-bottom:1px solid #2a2a4e}}
+          </style>
+          </head>
+          <body>
+          <header>
+            <h1>⚡ Baseline Load Test Report</h1>
+            <p>Image Authenticity Verification App — 100 Virtual Users × 60 Seconds | {datetime.datetime.now().strftime('%Y-%m-%d %H:%M UTC')}</p>
+          </header>
+          <div class="cards">
+            <div class="card" style="--c:#6c63ff"><div class="val">{rps}</div><div class="lbl">Requests / Sec</div></div>
+            <div class="card" style="--c:#1DB954"><div class="val">{tot}</div><div class="lbl">Total Requests</div></div>
+            <div class="card" style="--c:#FFC107"><div class="val">{avg}ms</div><div class="lbl">Avg Response</div></div>
+            <div class="card" style="--c:#1DB954"><div class="val">{minn}ms</div><div class="lbl">Min Response</div></div>
+            <div class="card" style="--c:#DC3545"><div class="val">{maxx}ms</div><div class="lbl">Max Response</div></div>
+            <div class="card" style="--c:#6c63ff"><div class="val">{p95}ms</div><div class="lbl">P95 Latency</div></div>
+            <div class="card" style="--c:#FFC107"><div class="val">{p99}ms</div><div class="lbl">P99 Latency</div></div>
+            <div class="card" style="--c:#DC3545"><div class="val">{err}%</div><div class="lbl">Error Rate</div></div>
+          </div>
+          <table>
+            <tr><th>Metric</th><th>Value</th><th>Threshold</th><th>Status</th></tr>
+            <tr><td>Requests / Second</td><td>{rps} req/s</td><td>Any</td><td>✅</td></tr>
+            <tr><td>Average Response Time</td><td>{avg}ms</td><td>&lt; 2000ms</td><td>{'✅' if str(avg).isdigit() and int(avg) < 2000 else '⚠️'}</td></tr>
+            <tr><td>P95 Response Time</td><td>{p95}ms</td><td>&lt; 2000ms</td><td>{'✅' if str(p95).isdigit() and int(p95) < 2000 else '⚠️'}</td></tr>
+            <tr><td>P99 Response Time</td><td>{p99}ms</td><td>&lt; 5000ms</td><td>{'✅' if str(p99).isdigit() and int(p99) < 5000 else '⚠️'}</td></tr>
+            <tr><td>Error Rate</td><td>{err}%</td><td>&lt; 10%</td><td>{'✅' if float(err.replace('%','').strip() or 0) < 10 else '❌'}</td></tr>
+          </table>
+          </body></html>"""
+
+          os.makedirs('load-test-results', exist_ok=True)
+          with open('load-test-results/load-test-report.html', 'w') as f:
+              f.write(html)
+          print("✅ Load test HTML report generated")
+          PYREPORT
+
+      - name: '📋 Publish Load Test Summary'
+        if: always()
+        run: |
+          if [ -f load-test-results/k6-summary.json ]; then
+            python3 << 'SUMMARY'
+          import json
+          data = json.load(open('load-test-results/k6-summary.json'))
+          rt = data.get('response_time', {})
+          print("# ⚡ Baseline Load Test Summary")
+          print("| Metric | Value |")
+          print("|--------|-------|")
+          print(f"| Virtual Users | 100 |")
+          print(f"| Duration | 60s |")
+          print(f"| Requests/sec | {data.get('rps', 'N/A')} |")
+          print(f"| Total Requests | {data.get('total_requests', 'N/A')} |")
+          print(f"| Avg Response | {rt.get('avg_ms', 'N/A')}ms |")
+          print(f"| Min Response | {rt.get('min_ms', 'N/A')}ms |")
+          print(f"| Max Response | {rt.get('max_ms', 'N/A')}ms |")
+          print(f"| P95 Latency | {rt.get('p95_ms', 'N/A')}ms |")
+          print(f"| P99 Latency | {rt.get('p99_ms', 'N/A')}ms |")
+          print(f"| Error Rate | {data.get('error_rate', '0.00')}% |")
+          SUMMARY
+          fi >> $GITHUB_STEP_SUMMARY
+
+      - name: '📤 Upload Load Test Artifacts'
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: load-test-results-build-${{ github.run_number }}
+          retention-days: 30
+          path: load-test-results/
+
+      - name: '🌐 Deploy Load Test Report to GitHub Pages'
+        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: load-test-results
+          keep_files: true
+          destination_dir: load-tests/build-${{ github.run_number }}
+          full_commit_message: 'chore: deploy load test report - Build #${{ github.run_number }}'

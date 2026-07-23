@@ -1,0 +1,52 @@
+# ─── Node / Vite ──────────────────────────────────────────────────────────────
+node_modules/
+dist/
+dist-ssr/
+.vite/
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.eggs/
+.env
+.venv
+venv/
+*.pyc
+
+# ─── Android Build Artifacts ──────────────────────────────────────────────────
+android-native/.gradle/
+android-native/build/
+android-native/app/build/
+android-native/.idea/
+android-native/.kotlin/
+*.apk
+*.aab
+local.properties
+
+# ─── Test Artifacts (runtime generated) ──────────────────────────────────────
+Test Results/
+load-test-results/
+automation/logs/
+automation/screenshots/
+automation/data/test_images/
+
+# ─── IDE ──────────────────────────────────────────────────────────────────────
+.idea/
+*.iml
+.vscode/
+*.suo
+*.user
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+hs_err_pid*.log
+
+# ─── Server ───────────────────────────────────────────────────────────────────
+server/ai_service/__pycache__/
+server/ai_service/model_cache/
+server/node_modules/
+server/database.json
+
