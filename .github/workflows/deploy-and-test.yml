@@ -41,7 +41,10 @@ jobs:
           cp -r docs/reports public/ 2>/dev/null || true
           cp -r docs/load-tests public/ 2>/dev/null || true
           npm run build
+          touch dist/.nojekyll
+          cp dist/index.html dist/404.html 2>/dev/null || true
           ls -la dist/
+
 
 
       - name: '🔍 Stage 4: Static Analysis Check'
