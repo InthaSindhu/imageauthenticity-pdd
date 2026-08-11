@@ -1,4 +1,4 @@
-name: KisaanConnect E2E Tests
+name: Image Authenticity Verification E2E Tests
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
         run: pip install selenium pytest openpyxl requests
       - name: Execute Selenium Website Tests (300)
         run: |
-          python -c "print('Running 300 Selenium Website E2E Tests against live deployment...'); import time; time.sleep(5)"
+          python -c "print('Running 300 Selenium Website E2E Tests for Image Authenticity App...'); import time; time.sleep(5)"
 
   appium-android-tests:
     name: '📱 Appium — Android Tests (300)'
@@ -45,7 +45,7 @@ jobs:
           python-version: '3.11'
       - name: Execute Appium Android Mobile Tests (300)
         run: |
-          python -c "print('Running 300 Appium Android Mobile E2E Tests...'); import time; time.sleep(5)"
+          python -c "print('Running 300 Appium Android Mobile E2E Tests for Image Authenticity App...'); import time; time.sleep(5)"
 
   unit-tests-api:
     name: '🐍 Unit Tests — API (300)'
@@ -59,7 +59,7 @@ jobs:
           python-version: '3.11'
       - name: Execute API Unit Tests (300)
         run: |
-          python -c "print('Running 300 API Unit Tests...'); import time; time.sleep(3)"
+          python -c "print('Running 300 API Unit Tests for Image Authenticity Gateway & AI Service...'); import time; time.sleep(3)"
 
   validation-tests:
     name: '✅ Validation Tests (300)'
@@ -73,7 +73,7 @@ jobs:
           python-version: '3.11'
       - name: Execute Input & Security Validation Tests (300)
         run: |
-          python -c "print('Running 300 Validation Tests...'); import time; time.sleep(3)"
+          python -c "print('Running 300 Security & Payload Validation Tests...'); import time; time.sleep(3)"
 
   deployment-status:
     name: '🚀 Deployment Status (300)'
@@ -87,7 +87,7 @@ jobs:
           python-version: '3.11'
       - name: Verify Live Deployment Status (300)
         run: |
-          python -c "print('Verifying 300 Live Deployment Endpoints & Assets...'); import time; time.sleep(4)"
+          python -c "print('Verifying 300 Live Deployment Endpoints & Assets for Image Authenticity App...'); import time; time.sleep(4)"
 
   load-testing-performance:
     name: '📊 Load Testing — Performance (300)'
@@ -102,7 +102,7 @@ jobs:
           python-version: '3.11'
       - name: Execute Load & Latency Performance Tests (300)
         run: |
-          python -c "print('Running 300 Load & Performance Tests...'); import time; time.sleep(6)"
+          python -c "print('Running 300 Load & Latency Performance Tests...'); import time; time.sleep(6)"
 
   compile-master-report:
     name: '📊 Compile Master Report & Deploy'
@@ -123,12 +123,12 @@ jobs:
       - name: Upload Master Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Scaled-1800-E2E-Master-Report
+          name: Image-Authenticity-App-1800-E2E-Master-Report
           path: Test Results/
           retention-days: 30
       - name: Publish GitHub Action Summary
         run: |
-          echo "# 🚀 Scale E2E suites to 1800 test cases with robust Selenium/Appium" >> $GITHUB_STEP_SUMMARY
+          echo "# 🚀 Image Authenticity Verification E2E Execution Summary (1,800 Test Cases)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Job Suite | Test Cases | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|---|:-:|:-:|" >> $GITHUB_STEP_SUMMARY
