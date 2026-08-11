@@ -28,9 +28,6 @@ jobs:
   build-and-deploy:
     name: '🏗️ Build & Deploy to GitHub Pages'
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: '📥 Stage 1: Repository Checkout'
@@ -51,23 +48,13 @@ jobs:
           cp dist/index.html dist/404.html 2>/dev/null || true
           ls -la dist/
 
-      - name: '🔍 Stage 4: Upload Pages Artifact'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-
-      - name: '🌐 Stage 5: Deploy to GitHub Pages'
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      - name: '🌐 Push gh-pages branch fallback'
+      - name: '🌐 Stage 5: Publish to gh-pages Branch'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           keep_files: false
           enable_jekyll: false
-
 
   # ─────────────────────────────────────────────────────────────────────────────
   # STAGE 6-13: Deployment Verification & Live E2E Selenium Testing
@@ -89,7 +76,7 @@ jobs:
       - name: '📦 Install Automation Dependencies'
         run: |
           python -m pip install --upgrade pip
-          pip install selenium pytest openpyxl jinja2 pandas requests pytest-rerunfailures pytest-timeout
+          pip install selenium pytest openpyxl jinja2 pandas requests
 
       - name: '⏳ Stage 6: Wait for GitHub Pages Deployment CDN Propagation'
         run: |
@@ -119,9 +106,8 @@ jobs:
       - name: '📊 Stage 9 & 10: Generate HTML & Excel Reports'
         if: always()
         run: |
-          python automation/utils/excel_reporter.py --input "Test Results/JSON/execution-results.json" --output-dir "Test Results/Excel" || true
-          python automation/utils/html_reporter.py --input "Test Results/JSON/execution-results.json" --output-dir "Test Results/HTML" --build "${{ github.run_number }}" --commit "${{ github.sha }}" --branch "${{ github.ref_name }}" || true
-          python automation/utils/summary_reporter.py --input "Test Results/JSON/execution-results.json" --output "Test Results/Summary/summary.md" --build "${{ github.run_number }}" --commit "${{ github.sha }}" --branch "${{ github.ref_name }}" || true
+          python automation/utils/excel_reporter.py || true
+          python automation/utils/html_reporter.py || true
 
       - name: '📤 Stage 11: Upload Test Evidence Artifacts'
         if: always()
