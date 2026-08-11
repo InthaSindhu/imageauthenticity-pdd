@@ -1,0 +1,15 @@
+{
+  "name": "appium-mobile-e2e",
+  "version": "1.0.0",
+  "description": "Appium Android Mobile End-to-End Testing Suite with Excel Report Generation for Image Authenticity Verification App",
+  "main": "run-tests.js",
+  "type": "module",
+  "scripts": {
+    "test": "node run-tests.js"
+  },
+  "dependencies": {
+    "webdriverio": "^8.36.0",
+    "exceljs": "^4.4.0",
+    "appium": "^2.5.1"
+  }
+}

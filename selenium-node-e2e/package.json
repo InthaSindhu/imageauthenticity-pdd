@@ -1,0 +1,15 @@
+{
+  "name": "selenium-node-e2e",
+  "version": "1.0.0",
+  "description": "Selenium Node.js End-to-End Testing Suite with Excel Report Generation for Image Authenticity Verification App",
+  "main": "run-tests.js",
+  "type": "module",
+  "scripts": {
+    "test": "node run-tests.js"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.20.0",
+    "exceljs": "^4.4.0",
+    "chromedriver": "^133.0.0"
+  }
+}

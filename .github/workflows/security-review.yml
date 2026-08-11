@@ -30,8 +30,7 @@ jobs:
 
       - name: '⚡ Install Dependencies'
         run: |
-          pip install requests openpyxl pandas jinja2 pyyaml pytest pytest-rerunfailures pytest-timeout Pillow numpy scipy exifread fastapi opencv-python-headless scikit-image
-          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install requests openpyxl pandas jinja2 pyyaml pytest
           npm install --prefix server || true
 
       - name: '🔍 Run Semgrep SAST Scan'
@@ -52,11 +51,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: '🧪 Run Backend Unit & Pipeline Tests'
-        env:
-          PYTHONPATH: server/ai_service
         run: |
           python -m pytest server/ai_service/test_pipeline.py -v
-
 
       - name: '📤 Upload Security Audit Artifacts'
         uses: actions/upload-artifact@v4

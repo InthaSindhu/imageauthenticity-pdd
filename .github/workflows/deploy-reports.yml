@@ -1,0 +1,25 @@
+name: Deploy Reports to GitHub Pages
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [deploy-test-reports]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy-gh-pages-reports:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Reports Directory to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Test Results
+          destination_dir: reports/latest

@@ -1,232 +1,214 @@
-"""
-Excel Reporter — Generates 7-sheet Automation_Test_Report.xlsx from execution-results.json.
-"""
-
-import json
 import os
-import sys
-import argparse
+import openpyxl
+from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from datetime import datetime
-from openpyxl import Workbook
-from openpyxl.styles import (
-    Font, PatternFill, Alignment, Border, Side, GradientFill
-)
-from openpyxl.utils import get_column_letter
+from automation.config.appium_config import AppiumConfig
 
-STATUS_COLORS = {
-    'PASSED':  'FF1DB954',  # Green
-    'FAILED':  'FFDC3545',  # Red
-    'SKIPPED': 'FFFFC107',  # Amber
-    'BLOCKED': 'FF6C757D',  # Grey
-}
-HEADER_FILL   = PatternFill('solid', fgColor='FF1A1A2E')
-HEADER_FONT   = Font(bold=True, color='FFFFFFFF', size=11)
-TITLE_FONT    = Font(bold=True, color='FF1A1A2E', size=14)
-BORDER_THIN   = Border(
-    left=Side(style='thin', color='FFD0D0D0'),
-    right=Side(style='thin', color='FFD0D0D0'),
-    top=Side(style='thin', color='FFD0D0D0'),
-    bottom=Side(style='thin', color='FFD0D0D0')
-)
+class EnterpriseExcelReporter:
+    def __init__(self, output_dir=None):
+        self.output_dir = output_dir or AppiumConfig.EXCEL_REPORTS_DIR
+        os.makedirs(self.output_dir, exist_ok=True)
 
+    def generate_all_reports(self, test_results, metrics):
+        master_path = self.generate_master_report(test_results, metrics)
+        passed_path = self.generate_passed_report(test_results)
+        failed_path = self.generate_failed_report(test_results)
+        summary_path = self.generate_summary_report(metrics)
+        return {
+            "master": master_path,
+            "passed": passed_path,
+            "failed": failed_path,
+            "summary": summary_path
+        }
 
-def _cell_style(ws, row, col, value, fill=None, font=None, align='left', border=True):
-    cell = ws.cell(row=row, column=col, value=value)
-    if fill:
-        cell.fill = fill
-    if font:
-        cell.font = font
-    cell.alignment = Alignment(horizontal=align, vertical='center', wrap_text=True)
-    if border:
-        cell.border = BORDER_THIN
-    return cell
+    def generate_master_report(self, test_results, metrics):
+        filepath = os.path.join(self.output_dir, "Automation_Test_Report.xlsx")
+        wb = openpyxl.Workbook()
+        
+        # Default sheet -> Executed Test Cases
+        ws1 = wb.active
+        ws1.title = "Executed Test Cases"
+        self._build_test_cases_sheet(ws1, test_results)
 
+        # Sheet 2 -> Passed Tests
+        ws2 = wb.create_sheet(title="Passed Tests")
+        passed_cases = [tc for tc in test_results if tc.get("status") == "PASS"]
+        self._build_test_cases_sheet(ws2, passed_cases)
 
-def _write_test_sheet(ws, title: str, tests: list, cols: list):
-    ws.title = title
-    # Title row
-    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(cols))
-    _cell_style(ws, 1, 1, title, font=TITLE_FONT, align='center')
-    ws.row_dimensions[1].height = 30
+        # Sheet 3 -> Failed Tests
+        ws3 = wb.create_sheet(title="Failed Tests")
+        failed_cases = [tc for tc in test_results if tc.get("status") == "FAIL"]
+        self._build_test_cases_sheet(ws3, failed_cases)
 
-    # Header row
-    for c_idx, col in enumerate(cols, 1):
-        _cell_style(ws, 2, c_idx, col, fill=HEADER_FILL, font=HEADER_FONT, align='center')
-    ws.row_dimensions[2].height = 20
+        # Sheet 4 -> Skipped Tests
+        ws4 = wb.create_sheet(title="Skipped Tests")
+        skipped_cases = [tc for tc in test_results if tc.get("status") == "SKIP"]
+        self._build_test_cases_sheet(ws4, skipped_cases)
 
-    # Data rows
-    for r_idx, test in enumerate(tests, 3):
-        status = test.get('status', 'UNKNOWN')
-        row_fill_color = STATUS_COLORS.get(status.upper(), 'FFFFFF')
-        row_fill = PatternFill('solid', fgColor='33' + row_fill_color[:6])
+        # Sheet 5 -> Execution Metrics
+        ws5 = wb.create_sheet(title="Execution Metrics")
+        self._build_metrics_sheet(ws5, metrics)
 
+        # Sheet 6 -> Defect Summary
+        ws6 = wb.create_sheet(title="Defect Summary")
+        self._build_defect_sheet(ws6, failed_cases)
 
+        # Sheet 7 -> Pass Rate Summary
+        ws7 = wb.create_sheet(title="Pass Rate Summary")
+        self._build_pass_rate_sheet(ws7, metrics, test_results)
 
-        row_data = [
-            test.get('id', ''),
-            test.get('module', ''),
-            test.get('name', ''),
-            test.get('priority', 'P2'),
-            status,
-            f"{test.get('duration_ms', 0):.1f}ms",
-            test.get('failure_reason', ''),
-            test.get('screenshot', ''),
+        wb.save(filepath)
+        return filepath
+
+    def generate_passed_report(self, test_results):
+        filepath = os.path.join(self.output_dir, "Passed_Test_Cases.xlsx")
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Passed Test Cases"
+        passed_cases = [tc for tc in test_results if tc.get("status") == "PASS"]
+        self._build_test_cases_sheet(ws, passed_cases)
+        wb.save(filepath)
+        return filepath
+
+    def generate_failed_report(self, test_results):
+        filepath = os.path.join(self.output_dir, "Failed_Test_Cases.xlsx")
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Failed Test Cases"
+        failed_cases = [tc for tc in test_results if tc.get("status") == "FAIL"]
+        self._build_test_cases_sheet(ws, failed_cases)
+        wb.save(filepath)
+        return filepath
+
+    def generate_summary_report(self, metrics):
+        filepath = os.path.join(self.output_dir, "Execution_Summary.xlsx")
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Execution Summary"
+        self._build_metrics_sheet(ws, metrics)
+        wb.save(filepath)
+        return filepath
+
+    def _build_test_cases_sheet(self, ws, test_cases):
+        headers = ["Test ID", "Module", "Test Name", "Priority", "Status", "Execution Time (s)", "Expected Result", "Actual Result / Error"]
+        ws.append(headers)
+        
+        header_fill = PatternFill(start_color="1E293B", end_color="1E293B", fill_type="solid")
+        header_font = Font(name="Segoe UI", size=11, bold=True, color="FFFFFF")
+        
+        for col_num, header in enumerate(headers, 1):
+            cell = ws.cell(row=1, column=col_num)
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = Alignment(horizontal="center", vertical="center")
+
+        thin_border = Border(left=Side(style='thin', color='CBD5E1'),
+                             right=Side(style='thin', color='CBD5E1'),
+                             top=Side(style='thin', color='CBD5E1'),
+                             bottom=Side(style='thin', color='CBD5E1'))
+
+        for row_idx, tc in enumerate(test_cases, 2):
+            status = tc.get("status", "PASS")
+            ws.append([
+                tc.get("test_id", f"TC_{row_idx}"),
+                tc.get("module", "General"),
+                tc.get("name", "Test Case"),
+                tc.get("priority", "P2"),
+                status,
+                round(tc.get("duration", 0.05), 3),
+                tc.get("expected", "Passes criteria"),
+                tc.get("error", "Executed successfully") if status == "FAIL" else tc.get("actual", "Success")
+            ])
+            
+            # Formatting status cell
+            status_cell = ws.cell(row=row_idx, column=5)
+            if status == "PASS":
+                status_cell.fill = PatternFill(start_color="D1FAE5", end_color="D1FAE5", fill_type="solid")
+                status_cell.font = Font(name="Segoe UI", bold=True, color="065F46")
+            elif status == "FAIL":
+                status_cell.fill = PatternFill(start_color="FEE2E2", end_color="FEE2E2", fill_type="solid")
+                status_cell.font = Font(name="Segoe UI", bold=True, color="991B1B")
+            else:
+                status_cell.fill = PatternFill(start_color="FEF3C7", end_color="FEF3C7", fill_type="solid")
+                status_cell.font = Font(name="Segoe UI", bold=True, color="92400E")
+
+            for col in range(1, 9):
+                ws.cell(row=row_idx, column=col).border = thin_border
+
+        # Adjust column widths
+        widths = [14, 24, 38, 12, 12, 18, 30, 45]
+        for idx, width in enumerate(widths, 1):
+            col_letter = openpyxl.utils.get_column_letter(idx)
+            ws.column_dimensions[col_letter].width = width
+
+    def _build_metrics_sheet(self, ws, metrics):
+        ws.title = "Execution Metrics"
+        ws.merge_cells("A1:D2")
+        title_cell = ws["A1"]
+        title_cell.value = "ENTERPRISE APPIUM AUTOMATION METRICS"
+        title_cell.font = Font(name="Segoe UI", size=14, bold=True, color="FFFFFF")
+        title_cell.fill = PatternFill(start_color="0F172A", end_color="0F172A", fill_type="solid")
+        title_cell.alignment = Alignment(horizontal="center", vertical="center")
+
+        data = [
+            ["Execution Timestamp", datetime.now().strftime("%Y-%m-%d %H:%M:%S")],
+            ["Target Application", "Image Authenticity Verifier (Android)"],
+            ["Target Package", metrics.get("package", "com.imageauth.verifier")],
+            ["Automation Engine", "Appium UiAutomator2"],
+            ["Total Test Cases", metrics.get("total", 0)],
+            ["Passed Test Cases", metrics.get("passed", 0)],
+            ["Failed Test Cases", metrics.get("failed", 0)],
+            ["Skipped Test Cases", metrics.get("skipped", 0)],
+            ["Pass Percentage", f"{metrics.get('pass_rate', 0)}%"],
+            ["Total Execution Time", f"{metrics.get('duration_s', 0)} seconds"]
         ]
-        for c_idx, val in enumerate(row_data[:len(cols)], 1):
-            cell = _cell_style(ws, r_idx, c_idx, val)
-            cell.fill = row_fill
-            if col == 'Status':
-                status_fill = PatternFill('solid', fgColor=row_fill_color)
-                cell.fill = status_fill
-                cell.font = Font(bold=True, color='FFFFFFFF')
 
-    # Column widths
-    col_widths = [12, 20, 45, 8, 10, 12, 40, 35]
-    for i, w in enumerate(col_widths[:len(cols)], 1):
-        ws.column_dimensions[get_column_letter(i)].width = w
+        for idx, (label, val) in enumerate(data, 4):
+            ws.cell(row=idx, column=1, value=label).font = Font(name="Segoe UI", bold=True)
+            ws.cell(row=idx, column=2, value=val).font = Font(name="Segoe UI")
 
+        ws.column_dimensions["A"].width = 28
+        ws.column_dimensions["B"].width = 40
 
-def generate_excel_report(results: dict, output_dir: str):
-    os.makedirs(output_dir, exist_ok=True)
-    metrics = results.get('metrics', {})
-    tests   = results.get('test_cases', [])
+    def _build_defect_sheet(self, ws, failed_cases):
+        headers = ["Defect ID", "Test Case ID", "Module", "Failure Summary", "Stack Trace / Log"]
+        ws.append(headers)
+        for idx, tc in enumerate(failed_cases, 1):
+            ws.append([
+                f"DEF_{idx:03d}",
+                tc.get("test_id"),
+                tc.get("module"),
+                tc.get("name"),
+                tc.get("error", "Assertion Failure")
+            ])
+        ws.column_dimensions["A"].width = 14
+        ws.column_dimensions["B"].width = 16
+        ws.column_dimensions["C"].width = 24
+        ws.column_dimensions["D"].width = 36
+        ws.column_dimensions["E"].width = 50
 
-    passed  = [t for t in tests if t.get('status', '').upper() == 'PASSED']
-    failed  = [t for t in tests if t.get('status', '').upper() == 'FAILED']
-    skipped = [t for t in tests if t.get('status', '').upper() == 'SKIPPED']
+    def _build_pass_rate_sheet(self, ws, metrics, test_results):
+        ws.append(["Module Name", "Total", "Passed", "Failed", "Pass Rate (%)"])
+        
+        module_stats = {}
+        for tc in test_results:
+            mod = tc.get("module", "General")
+            if mod not in module_stats:
+                module_stats[mod] = {"total": 0, "passed": 0, "failed": 0}
+            module_stats[mod]["total"] += 1
+            if tc.get("status") == "PASS":
+                module_stats[mod]["passed"] += 1
+            elif tc.get("status") == "FAIL":
+                module_stats[mod]["failed"] += 1
 
-    wb = Workbook()
-    ALL_COLS    = ['Test ID', 'Module', 'Test Name', 'Priority', 'Status', 'Duration', 'Failure Reason', 'Screenshot']
-    SIMPLE_COLS = ['Test ID', 'Module', 'Test Name', 'Priority', 'Status', 'Duration', 'Failure Reason', 'Screenshot']
+        for mod, stats in module_stats.items():
+            tot = stats["total"]
+            pas = stats["passed"]
+            rate = round((pas / tot) * 100, 2) if tot > 0 else 0
+            ws.append([mod, tot, pas, stats["failed"], f"{rate}%"])
 
-    # Sheet 1: All Executed
-    ws1 = wb.active
-    _write_test_sheet(ws1, 'All Executed Tests', tests, ALL_COLS)
-
-    # Sheet 2: Passed
-    ws2 = wb.create_sheet('Passed Tests')
-    _write_test_sheet(ws2, 'Passed Tests', passed, SIMPLE_COLS)
-
-    # Sheet 3: Failed
-    ws3 = wb.create_sheet('Failed Tests')
-    _write_test_sheet(ws3, 'Failed Tests', failed, SIMPLE_COLS)
-
-    # Sheet 4: Skipped
-    ws4 = wb.create_sheet('Skipped Tests')
-    _write_test_sheet(ws4, 'Skipped Tests', skipped, SIMPLE_COLS)
-
-    # Sheet 5: Execution Metrics
-    ws5 = wb.create_sheet('Execution Metrics')
-    ws5.title = 'Execution Metrics'
-    metric_data = [
-        ('Total Test Cases', metrics.get('total', len(tests))),
-        ('Passed', metrics.get('passed', len(passed))),
-        ('Failed', metrics.get('failed', len(failed))),
-        ('Skipped', metrics.get('skipped', len(skipped))),
-        ('Pass Rate (%)', f"{metrics.get('pass_rate', 0):.1f}%"),
-        ('Fail Rate (%)', f"{metrics.get('fail_rate', 0):.1f}%"),
-        ('Total Duration', metrics.get('duration', 'N/A')),
-        ('Execution Start', metrics.get('start_time', 'N/A')),
-        ('Execution End', metrics.get('end_time', 'N/A')),
-        ('App Version', metrics.get('app_version', '1.0.0')),
-        ('Android Version', metrics.get('android_version', '14')),
-        ('Device', metrics.get('device', 'E2E_Emulator')),
-    ]
-    _cell_style(ws5, 1, 1, 'Execution Metrics Summary', font=TITLE_FONT)
-    _cell_style(ws5, 2, 1, 'Metric', fill=HEADER_FILL, font=HEADER_FONT)
-    _cell_style(ws5, 2, 2, 'Value', fill=HEADER_FILL, font=HEADER_FONT)
-    for i, (k, v) in enumerate(metric_data, 3):
-        _cell_style(ws5, i, 1, k)
-        _cell_style(ws5, i, 2, str(v))
-    ws5.column_dimensions['A'].width = 30
-    ws5.column_dimensions['B'].width = 30
-
-    # Sheet 6: Defect Summary by Module
-    ws6 = wb.create_sheet('Defect Summary')
-    module_failures = {}
-    for t in failed:
-        mod = t.get('module', 'Unknown')
-        module_failures[mod] = module_failures.get(mod, 0) + 1
-    _cell_style(ws6, 1, 1, 'Defect Summary by Module', font=TITLE_FONT)
-    _cell_style(ws6, 2, 1, 'Module', fill=HEADER_FILL, font=HEADER_FONT)
-    _cell_style(ws6, 2, 2, 'Failure Count', fill=HEADER_FILL, font=HEADER_FONT)
-    for i, (mod, cnt) in enumerate(sorted(module_failures.items(), key=lambda x: -x[1]), 3):
-        _cell_style(ws6, i, 1, mod)
-        _cell_style(ws6, i, 2, cnt)
-    ws6.column_dimensions['A'].width = 35
-    ws6.column_dimensions['B'].width = 20
-
-    # Sheet 7: Pass Rate by Module
-    ws7 = wb.create_sheet('Pass Rate Summary')
-    module_stats = {}
-    for t in tests:
-        mod = t.get('module', 'Unknown')
-        if mod not in module_stats:
-            module_stats[mod] = {'pass': 0, 'total': 0}
-        module_stats[mod]['total'] += 1
-        if t.get('status', '').upper() == 'PASSED':
-            module_stats[mod]['pass'] += 1
-    _cell_style(ws7, 1, 1, 'Pass Rate by Module', font=TITLE_FONT)
-    _cell_style(ws7, 2, 1, 'Module', fill=HEADER_FILL, font=HEADER_FONT)
-    _cell_style(ws7, 2, 2, 'Total', fill=HEADER_FILL, font=HEADER_FONT)
-    _cell_style(ws7, 2, 3, 'Passed', fill=HEADER_FILL, font=HEADER_FONT)
-    _cell_style(ws7, 2, 4, 'Pass Rate', fill=HEADER_FILL, font=HEADER_FONT)
-    for i, (mod, s) in enumerate(sorted(module_stats.items()), 3):
-        rate = (s['pass'] / s['total'] * 100) if s['total'] > 0 else 0
-        _cell_style(ws7, i, 1, mod)
-        _cell_style(ws7, i, 2, s['total'])
-        _cell_style(ws7, i, 3, s['pass'])
-        _cell_style(ws7, i, 4, f"{rate:.1f}%")
-    ws7.column_dimensions['A'].width = 35
-
-    # Save reports
-    main_path   = os.path.join(output_dir, 'Automation_Test_Report.xlsx')
-    passed_path = os.path.join(output_dir, 'Passed_Test_Cases.xlsx')
-    failed_path = os.path.join(output_dir, 'Failed_Test_Cases.xlsx')
-    summary_path= os.path.join(output_dir, 'Execution_Summary.xlsx')
-
-    wb.save(main_path)
-
-    # Passed-only workbook
-    wb_p = Workbook()
-    _write_test_sheet(wb_p.active, 'Passed Tests', passed, SIMPLE_COLS)
-    wb_p.save(passed_path)
-
-    # Failed-only workbook
-    wb_f = Workbook()
-    _write_test_sheet(wb_f.active, 'Failed Tests', failed, SIMPLE_COLS)
-    wb_f.save(failed_path)
-
-    # Summary workbook
-    wb_s = Workbook()
-    ws_s = wb_s.active
-    ws_s.title = 'Execution Metrics'
-    _cell_style(ws_s, 1, 1, 'Execution Metrics Summary', font=TITLE_FONT)
-    _cell_style(ws_s, 2, 1, 'Metric', fill=HEADER_FILL, font=HEADER_FONT)
-    _cell_style(ws_s, 2, 2, 'Value', fill=HEADER_FILL, font=HEADER_FONT)
-    for i, (k, v) in enumerate(metric_data, 3):
-        _cell_style(ws_s, i, 1, k)
-        _cell_style(ws_s, i, 2, str(v))
-    ws_s.column_dimensions['A'].width = 30
-    ws_s.column_dimensions['B'].width = 30
-    wb_s.save(summary_path)
-
-    print(f"[OK] Excel reports generated in: {output_dir}")
-
-    return main_path
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--input', required=True, help='Path to execution-results.json')
-    parser.add_argument('--output-dir', required=True, help='Output directory for Excel reports')
-    args = parser.parse_args()
-
-    if not os.path.exists(args.input):
-        print(f"❌ Input file not found: {args.input}")
-        sys.exit(1)
-
-    with open(args.input, 'r') as f:
-        results = json.load(f)
-
-    generate_excel_report(results, args.output_dir)
+        ws.column_dimensions["A"].width = 30
+        ws.column_dimensions["B"].width = 12
+        ws.column_dimensions["C"].width = 12
+        ws.column_dimensions["D"].width = 12
+        ws.column_dimensions["E"].width = 16

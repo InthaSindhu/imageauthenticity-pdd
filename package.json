@@ -7,7 +7,9 @@
     "build": "vite build",
     "dev": "concurrently \"node server/server.cjs\" \"vite\" \"python server/ai_service/main.py\"",
     "android:build": "npm run build && npx cap sync android",
-    "android:open": "npx cap open android"
+    "android:open": "npx cap open android",
+    "test:selenium-node": "node selenium-node-e2e/run-tests.js",
+    "test:appium": "node appium-mobile-e2e/run-tests.js"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

@@ -28,8 +28,8 @@ logging.basicConfig(
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 _MODEL_PATH = os.path.normpath(os.path.join(_THIS_DIR, "..", "best_image_authenticity_model.pth"))
 
-# ── Class index to label mapping ──────────────────────────────────────────────
-CLASS_NAMES = {0: "Deepfake", 1: "Real", 2: "Tempered"}
+# ── Class index to label mapping (0: Deepfake, 1: Tempered, 2: Real) ───────────────
+CLASS_NAMES = {0: "Deepfake", 1: "Tempered", 2: "Real"}
 
 # ── EfficientNet-B3 preprocessing constants (ImageNet mean/std, 300x300) ─────
 _IMG_SIZE = 300
@@ -147,8 +147,8 @@ class EfficientNetB3Classifier:
                 probs_np = probs_full
 
         deepfake_prob = float(probs_np[0])
-        real_prob     = float(probs_np[1])
-        tempered_prob = float(probs_np[2])
+        tempered_prob = float(probs_np[1])
+        real_prob     = float(probs_np[2])
 
 
         class_id   = int(np.argmax(probs_np))

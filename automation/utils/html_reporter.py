@@ -1,256 +1,283 @@
-"""
-HTML Reporter — Generates premium interactive HTML execution-report.html and dashboard.html.
-Features: pie charts, trend graphs, screenshot inline viewer, module filter.
-"""
-
-import json
 import os
-import sys
-import argparse
+import json
 from datetime import datetime
+from automation.config.appium_config import AppiumConfig
 
+class EnterpriseHTMLReporter:
+    def __init__(self, output_dir=None):
+        self.output_dir = output_dir or AppiumConfig.HTML_REPORTS_DIR
+        os.makedirs(self.output_dir, exist_ok=True)
 
-def _badge(status: str) -> str:
-    colors = {'PASSED': '#1DB954', 'FAILED': '#DC3545', 'SKIPPED': '#FFC107', 'BLOCKED': '#6C757D'}
-    color = colors.get(status.upper(), '#aaa')
-    return f'<span class="badge" style="background:{color};color:#fff;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700;">{status}</span>'
+    def generate_all_html_reports(self, test_results, metrics):
+        report_path = self.generate_execution_report(test_results, metrics)
+        dashboard_path = self.generate_dashboard(test_results, metrics)
+        trends_path = self.generate_trends(metrics)
+        return {
+            "execution": report_path,
+            "dashboard": dashboard_path,
+            "trends": trends_path
+        }
 
+    def generate_execution_report(self, test_results, metrics):
+        filepath = os.path.join(self.output_dir, "execution-report.html")
+        
+        rows_html = ""
+        for idx, tc in enumerate(test_results, 1):
+            status = tc.get("status", "PASS")
+            badge_class = "pass" if status == "PASS" else ("fail" if status == "FAIL" else "skip")
+            error_msg = f"<span class='error-msg'>{tc.get('error', '')}</span>" if status == "FAIL" else "N/A"
+            
+            rows_html += f"""
+            <tr class="test-row {status.lower()}">
+                <td>{tc.get('test_id', f'TC_{idx:03d}')}</td>
+                <td><span class="module-tag">{tc.get('module', 'General')}</span></td>
+                <td class="test-name">{tc.get('name', 'Test Case')}</td>
+                <td><span class="badge priority-{tc.get('priority', 'P2').lower()}">{tc.get('priority', 'P2')}</span></td>
+                <td><span class="badge status-{badge_class}">{status}</span></td>
+                <td>{round(tc.get('duration', 0.05), 3)}s</td>
+                <td>{error_msg}</td>
+            </tr>
+            """
 
-def generate_html_report(results: dict, output_dir: str, screenshots_dir: str = 'automation/screenshots',
-                          build: str = 'N/A', commit: str = 'N/A', branch: str = 'N/A'):
-    os.makedirs(output_dir, exist_ok=True)
-
-    metrics = results.get('metrics', {})
-    tests   = results.get('test_cases', [])
-    passed  = metrics.get('passed', sum(1 for t in tests if t.get('status', '').upper() == 'PASSED'))
-    failed  = metrics.get('failed', sum(1 for t in tests if t.get('status', '').upper() == 'FAILED'))
-    skipped = metrics.get('skipped', sum(1 for t in tests if t.get('status', '').upper() == 'SKIPPED'))
-    total   = metrics.get('total', len(tests))
-    pass_rate = (passed / total * 100) if total > 0 else 0
-    duration  = metrics.get('duration', 'N/A')
-
-    # Module breakdown
-    module_stats = {}
-    for t in tests:
-        mod = t.get('module', 'Unknown')
-        if mod not in module_stats:
-            module_stats[mod] = {'pass': 0, 'fail': 0, 'skip': 0, 'total': 0}
-        module_stats[mod]['total'] += 1
-        s = t.get('status', '').upper()
-        if s == 'PASSED':   module_stats[mod]['pass'] += 1
-        elif s == 'FAILED': module_stats[mod]['fail'] += 1
-        else:               module_stats[mod]['skip'] += 1
-
-    module_rows = ''
-    for mod, s in sorted(module_stats.items()):
-        rate = (s['pass'] / s['total'] * 100) if s['total'] > 0 else 0
-        bar_color = '#1DB954' if rate >= 95 else '#FFC107' if rate >= 70 else '#DC3545'
-        module_rows += f'''
-        <tr>
-          <td>{mod}</td>
-          <td>{s["total"]}</td>
-          <td style="color:#1DB954;font-weight:700">{s["pass"]}</td>
-          <td style="color:#DC3545;font-weight:700">{s["fail"]}</td>
-          <td style="color:#FFC107">{s["skip"]}</td>
-          <td>
-            <div style="background:#e9ecef;border-radius:10px;height:10px;width:100%">
-              <div style="background:{bar_color};border-radius:10px;height:10px;width:{rate:.0f}%"></div>
-            </div>
-            <small>{rate:.1f}%</small>
-          </td>
-        </tr>'''
-
-    test_rows = ''
-    for t in tests:
-        status = t.get('status', 'UNKNOWN').upper()
-        sc = t.get('screenshot', '')
-        sc_link = f'<a href="../screenshots/{os.path.basename(sc)}" target="_blank">📸</a>' if sc else '-'
-        reason = t.get('failure_reason', '-')
-        test_rows += f'''
-        <tr class="status-{status.lower()}">
-          <td style="font-family:monospace;font-size:11px">{t.get("id","")}</td>
-          <td>{t.get("module","")}</td>
-          <td>{t.get("name","")}</td>
-          <td>{t.get("priority","P2")}</td>
-          <td>{_badge(status)}</td>
-          <td>{t.get("duration_ms",0):.0f}ms</td>
-          <td style="font-size:11px;color:#dc3545">{reason if status=="FAILED" else "-"}</td>
-          <td>{sc_link}</td>
-        </tr>'''
-
-    chart_data = json.dumps([passed, failed, skipped, total - passed - failed - skipped])
-
-    html = f"""<!DOCTYPE html>
+        html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>E2E Execution Report — Build #{build}</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-  :root {{
-    --bg: #0f0f1a; --card: #1a1a2e; --accent: #6c63ff; --pass: #1DB954;
-    --fail: #DC3545; --skip: #FFC107; --text: #e0e0e0; --sub: #a0a0c0;
-  }}
-  * {{ margin:0; padding:0; box-sizing:border-box; }}
-  body {{ font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); }}
-  header {{ background:linear-gradient(135deg,#1a1a2e,#16213e);
-            padding:40px; border-bottom:1px solid #2a2a4e; }}
-  header h1 {{ font-size:28px; font-weight:800; color:#fff; }}
-  header p  {{ color:var(--sub); margin-top:6px; font-size:13px; }}
-  .meta {{ display:flex; gap:24px; margin-top:16px; flex-wrap:wrap; }}
-  .meta-item {{ background:#16213e; padding:8px 16px; border-radius:8px;
-                font-size:12px; color:var(--sub); border:1px solid #2a2a4e; }}
-  .meta-item strong {{ color:#fff; }}
-  .stats {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-            gap:20px; padding:30px 40px; }}
-  .stat-card {{ background:var(--card); border-radius:16px; padding:24px;
-                border:1px solid #2a2a4e; text-align:center; position:relative; overflow:hidden; }}
-  .stat-card::before {{ content:''; position:absolute; top:0; left:0;
-                        width:4px; height:100%; background:var(--c); }}
-  .stat-card .num {{ font-size:40px; font-weight:800; color:var(--c); line-height:1; }}
-  .stat-card .lbl {{ font-size:12px; color:var(--sub); margin-top:6px; text-transform:uppercase; letter-spacing:1px; }}
-  .section {{ padding:0 40px 30px; }}
-  .section h2 {{ font-size:18px; font-weight:700; margin-bottom:16px;
-                 padding-bottom:10px; border-bottom:1px solid #2a2a4e; }}
-  table {{ width:100%; border-collapse:collapse; background:var(--card);
-           border-radius:12px; overflow:hidden; font-size:13px; }}
-  th {{ background:#16213e; color:var(--sub); padding:12px 16px;
-        text-align:left; font-size:12px; text-transform:uppercase; letter-spacing:0.5px; }}
-  td {{ padding:10px 16px; border-bottom:1px solid #2a2a4e; }}
-  tr:hover {{ background:#16213e44; }}
-  .status-passed {{ border-left:3px solid #1DB954; }}
-  .status-failed  {{ border-left:3px solid #DC3545; }}
-  .status-skipped {{ border-left:3px solid #FFC107; }}
-  .badge {{ border-radius:12px; padding:2px 8px; font-size:11px; font-weight:700; }}
-  .filter-bar {{ display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }}
-  .filter-btn {{ background:#2a2a4e; color:var(--sub); border:1px solid #3a3a6e;
-                 padding:6px 16px; border-radius:20px; cursor:pointer; font-size:12px;
-                 transition:all 0.2s; }}
-  .filter-btn.active, .filter-btn:hover {{ background:var(--accent); color:#fff; border-color:var(--accent); }}
-  .search-box {{ background:#1a1a2e; border:1px solid #2a2a4e; color:#fff;
-                 padding:8px 16px; border-radius:8px; width:300px; font-size:13px; }}
-  footer {{ text-align:center; padding:30px; color:var(--sub); font-size:12px;
-            border-top:1px solid #2a2a4e; }}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Appium E2E Automation Report</title>
+    <style>
+        :root {{
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-amber: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }}
+        body {{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 24px;
+        }}
+        .header {{
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }}
+        .header h1 {{ margin: 0; font-size: 24px; color: #fff; }}
+        .header p {{ margin: 6px 0 0 0; color: var(--text-muted); font-size: 14px; }}
+        .kpi-container {{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }}
+        .kpi-card {{
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }}
+        .kpi-title {{ font-size: 13px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }}
+        .kpi-value {{ font-size: 32px; font-weight: 700; margin-top: 8px; color: #fff; }}
+        .controls {{
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }}
+        .search-input {{
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: var(--card-bg);
+            color: #fff;
+            font-size: 14px;
+        }}
+        .filter-btn {{
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: var(--card-bg);
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }}
+        .filter-btn.active {{ background: var(--accent-blue); }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }}
+        th, td {{ padding: 12px 16px; text-align: left; border-bottom: 1px solid #334155; font-size: 14px; }}
+        th {{ background-color: #0f172a; color: var(--text-muted); font-weight: 600; }}
+        .badge {{
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+        }}
+        .status-pass {{ background: #065f46; color: #a7f3d0; }}
+        .status-fail {{ background: #991b1b; color: #fecaca; }}
+        .status-skip {{ background: #92400e; color: #fef3c7; }}
+        .module-tag {{ background: #334155; color: #e2e8f0; padding: 2px 8px; border-radius: 4px; font-size: 12px; }}
+        .error-msg {{ color: #f87171; font-family: monospace; font-size: 12px; }}
+    </style>
 </head>
 <body>
-<header>
-  <h1>📱 Android Appium E2E Execution Report</h1>
-  <p>Image Authenticity Verification App — Automated Test Execution Summary</p>
-  <div class="meta">
-    <div class="meta-item">Build: <strong>#{build}</strong></div>
-    <div class="meta-item">Branch: <strong>{branch}</strong></div>
-    <div class="meta-item">Commit: <strong>{commit[:8]}</strong></div>
-    <div class="meta-item">Duration: <strong>{duration}</strong></div>
-    <div class="meta-item">Device: <strong>{metrics.get("device","E2E_Emulator")}</strong></div>
-    <div class="meta-item">Android: <strong>{metrics.get("android_version","14")}</strong></div>
-    <div class="meta-item">App: <strong>{metrics.get("app_version","1.0.0")}</strong></div>
-    <div class="meta-item">Generated: <strong>{datetime.now().strftime("%Y-%m-%d %H:%M")}</strong></div>
-  </div>
-</header>
+    <div class="header">
+        <div>
+            <h1>ANDROID APPIUM AUTOMATION E2E REPORT</h1>
+            <p>Target Package: {metrics.get('package', 'com.imageauth.verifier')} | Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+        </div>
+    </div>
 
-<div class="stats">
-  <div class="stat-card" style="--c:#6c63ff">
-    <div class="num">{total}</div><div class="lbl">Total Tests</div>
-  </div>
-  <div class="stat-card" style="--c:#1DB954">
-    <div class="num">{passed}</div><div class="lbl">Passed</div>
-  </div>
-  <div class="stat-card" style="--c:#DC3545">
-    <div class="num">{failed}</div><div class="lbl">Failed</div>
-  </div>
-  <div class="stat-card" style="--c:#FFC107">
-    <div class="num">{skipped}</div><div class="lbl">Skipped</div>
-  </div>
-  <div class="stat-card" style="--c:{'#1DB954' if pass_rate >= 95 else '#FFC107' if pass_rate >= 70 else '#DC3545'}">
-    <div class="num">{pass_rate:.1f}%</div><div class="lbl">Pass Rate</div>
-  </div>
-</div>
+    <div class="kpi-container">
+        <div class="kpi-card">
+            <div class="kpi-title">Total Test Cases</div>
+            <div class="kpi-value">{metrics.get('total', 0)}</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">Passed Tests</div>
+            <div class="kpi-value" style="color: var(--accent-green);">{metrics.get('passed', 0)}</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">Failed Tests</div>
+            <div class="kpi-value" style="color: var(--accent-red);">{metrics.get('failed', 0)}</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">Pass Rate</div>
+            <div class="kpi-value" style="color: var(--accent-blue);">{metrics.get('pass_rate', 0)}%</div>
+        </div>
+    </div>
 
-<div class="section">
-  <h2>📊 Module-Level Breakdown</h2>
-  <table>
-    <tr>
-      <th>Module</th><th>Total</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Pass Rate</th>
-    </tr>
-    {module_rows}
-  </table>
-</div>
+    <div class="controls">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search test cases by name, module, or status..." onkeyup="filterTable()">
+        <button class="filter-btn active" onclick="filterStatus('all', this)">All</button>
+        <button class="filter-btn" onclick="filterStatus('pass', this)">Passed</button>
+        <button class="filter-btn" onclick="filterStatus('fail', this)">Failed</button>
+    </div>
 
-<div class="section">
-  <h2>🧪 Test Case Results</h2>
-  <div class="filter-bar">
-    <input class="search-box" type="text" id="searchBox" placeholder="Search test cases..." onkeyup="filterTable()">
-    <button class="filter-btn active" onclick="filterStatus('all',this)">All ({total})</button>
-    <button class="filter-btn" onclick="filterStatus('passed',this)">✅ Passed ({passed})</button>
-    <button class="filter-btn" onclick="filterStatus('failed',this)">❌ Failed ({failed})</button>
-    <button class="filter-btn" onclick="filterStatus('skipped',this)">⏭️ Skipped ({skipped})</button>
-  </div>
-  <table id="testTable">
-    <tr>
-      <th>Test ID</th><th>Module</th><th>Test Name</th><th>Priority</th>
-      <th>Status</th><th>Duration</th><th>Failure Reason</th><th>Screenshot</th>
-    </tr>
-    {test_rows}
-  </table>
-</div>
+    <table id="testTable">
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Module</th>
+                <th>Test Case Name</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Duration</th>
+                <th>Log / Diagnostics</th>
+            </tr>
+        </thead>
+        <tbody>
+            {rows_html}
+        </tbody>
+    </table>
 
-<footer>
-  <p>Generated by Image Authenticity Verification App Automation Suite | Build #{build} | {datetime.now().strftime("%Y-%m-%d %H:%M UTC")}</p>
-</footer>
+    <script>
+        function filterTable() {{
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const rows = document.querySelectorAll("#testTable tbody tr");
+            rows.forEach(row => {{
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            }});
+        }}
 
-<script>
-function filterStatus(status, btn) {{
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('#testTable tr[class]').forEach(row => {{
-    row.style.display = (status === 'all' || row.classList.contains('status-'+status)) ? '' : 'none';
-  }});
-}}
-function filterTable() {{
-  const q = document.getElementById('searchBox').value.toLowerCase();
-  document.querySelectorAll('#testTable tr[class]').forEach(row => {{
-    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
-  }});
-}}
-</script>
+        function filterStatus(status, btn) {{
+            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            const rows = document.querySelectorAll("#testTable tbody tr");
+            rows.forEach(row => {{
+                if (status === "all") row.style.display = "";
+                else row.style.display = row.classList.contains(status) ? "" : "none";
+            }});
+        }}
+    </script>
+</body>
+</html>
+"""
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(html_content)
+            
+        return filepath
+
+    def generate_dashboard(self, test_results, metrics):
+        filepath = os.path.join(self.output_dir, "dashboard.html")
+        html_content = f"""<!DOCTYPE html>
+<html>
+<head>
+    <title>E2E Automation Metrics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {{ background: #0f172a; color: #fff; font-family: sans-serif; padding: 24px; }}
+        .grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }}
+        .card {{ background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; }}
+    </style>
+</head>
+<body>
+    <h2>Appium Test Metrics & Execution Dashboard</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Overall Status Breakdown</h3>
+            <canvas id="statusChart"></canvas>
+        </div>
+        <div class="card">
+            <h3>Execution Summary Info</h3>
+            <p><strong>Total Executed:</strong> {metrics.get('total', 0)}</p>
+            <p><strong>Passed:</strong> {metrics.get('passed', 0)}</p>
+            <p><strong>Failed:</strong> {metrics.get('failed', 0)}</p>
+            <p><strong>Pass Rate:</strong> {metrics.get('pass_rate', 0)}%</p>
+            <p><strong>Total Duration:</strong> {metrics.get('duration_s', 0)}s</p>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('statusChart').getContext('2d');
+        new Chart(ctx, {{
+            type: 'doughnut',
+            data: {{
+                labels: ['Passed', 'Failed', 'Skipped'],
+                datasets: [{{
+                    data: [{metrics.get('passed', 0)}, {metrics.get('failed', 0)}, {metrics.get('skipped', 0)}],
+                    backgroundColor: ['#10b981', '#ef4444', '#f59e0b']
+                }}]
+            }}
+        }});
+    </script>
 </body>
 </html>"""
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        return filepath
 
-    report_path = os.path.join(output_dir, 'execution-report.html')
-    with open(report_path, 'w', encoding='utf-8') as f:
-        f.write(html)
-
-    # Simple dashboard redirect
-    dashboard = f"""<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>Dashboard</title>
-<meta http-equiv="refresh" content="0;url=execution-report.html">
-</head><body><p>Redirecting to <a href="execution-report.html">execution report</a>...</p></body></html>"""
-    with open(os.path.join(output_dir, 'dashboard.html'), 'w') as f:
-        f.write(dashboard)
-
-    print(f"[OK] HTML reports generated in: {output_dir}")
-
-    return report_path
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--input', required=True)
-    parser.add_argument('--output-dir', required=True)
-    parser.add_argument('--screenshots-dir', default='automation/screenshots')
-    parser.add_argument('--build', default='N/A')
-    parser.add_argument('--commit', default='N/A')
-    parser.add_argument('--branch', default='N/A')
-    args = parser.parse_args()
-
-    if not os.path.exists(args.input):
-        print(f"❌ Input file not found: {args.input}")
-        sys.exit(1)
-
-    with open(args.input) as f:
-        results = json.load(f)
-
-    generate_html_report(results, args.output_dir, args.screenshots_dir,
-                         args.build, args.commit, args.branch)
+    def generate_trends(self, metrics):
+        filepath = os.path.join(self.output_dir, "trends.html")
+        html_content = f"""<!DOCTYPE html>
+<html>
+<head>
+    <title>Execution Trends</title>
+    <style>body {{ background: #0f172a; color: #fff; font-family: sans-serif; padding: 24px; }}</style>
+</head>
+<body>
+    <h2>Historical Execution Trends</h2>
+    <p>Build Pass Rate History: Current Build ({metrics.get('pass_rate', 0)}%)</p>
+</body>
+</html>"""
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        return filepath

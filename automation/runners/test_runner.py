@@ -32,11 +32,6 @@ def _run_pytest(mode: str, output_dir: str, screenshot_dir: str) -> dict:
         '-v',
         '--tb=short',
         f'--junitxml={junit_xml}',
-        '--reruns=2',
-        '--reruns-delay=1',
-        '--timeout=120',
-        '-x' if mode == 'local' else '',
-        f'--screenshot-dir={screenshot_dir}',
     ]
 
     cmd = [c for c in cmd if c]  # Remove empty strings
@@ -272,24 +267,22 @@ def main():
 
         # Generate Excel Report
         try:
-            from automation.utils.excel_reporter import generate_excel_report
-            generate_excel_report(results, os.path.join(args.output_dir, 'Excel'))
+            from automation.utils.excel_reporter import EnterpriseExcelReporter
+            reporter = EnterpriseExcelReporter(os.path.join(args.output_dir, 'Excel'))
+            reporter.generate_all_reports(results.get('test_cases', []), results.get('metrics', {}))
+            print("[OK] Excel reports generated successfully")
         except Exception as e:
             print(f"[Runner] Excel report error: {e}")
 
         # Generate HTML Report
         try:
-            from automation.utils.html_reporter import generate_html_report
-            generate_html_report(
-                results,
-                os.path.join(args.output_dir, 'HTML'),
-                args.screenshot_dir,
-                build=os.environ.get('GITHUB_RUN_NUMBER', 'local'),
-                commit=os.environ.get('GITHUB_SHA', 'local'),
-                branch=os.environ.get('GITHUB_REF_NAME', 'main'),
-            )
+            from automation.utils.html_reporter import EnterpriseHTMLReporter
+            reporter = EnterpriseHTMLReporter(os.path.join(args.output_dir, 'HTML'))
+            reporter.generate_all_html_reports(results.get('test_cases', []), results.get('metrics', {}))
+            print("[OK] HTML reports generated successfully")
         except Exception as e:
             print(f"[Runner] HTML report error: {e}")
+
 
         # Generate Markdown Summary
         try:

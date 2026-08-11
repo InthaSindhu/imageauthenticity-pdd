@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Image Authenticity Verifier</string>
+    <string name="title_activity_main">Image Authenticity Verifier</string>
+    <string name="package_name">com.imageauth.verifier</string>
+    <string name="custom_url_scheme">com.imageauth.verifier</string>
+</resources>
